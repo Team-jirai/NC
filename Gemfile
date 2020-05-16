@@ -61,6 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
 gem 'devise'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile' # 画像投稿用gem
@@ -75,4 +76,5 @@ gem 'pry-byebug' # 一度プログラム処理を止めて、その時点のア�
 gem 'kaminari','~> 1.1.1' #ページ区切る為
 
 gem 'jp_prefecture' # 住所機能
+
 
