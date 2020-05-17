@@ -1,3 +1,10 @@
+
+<div>
+  <%= link_to "カートを空にする", customers_cart_products_empty_cart_path, method: :delete %>
+</div>
+
+
+
 <div>
   <table>
     <thead>
@@ -10,26 +17,26 @@
       </tr>
     </thead>
     <tbody>
-      <% @carts.each do |cart| %>
+      <% @cart_products.each do |cart_product| %>
       <tr>
         <td>
           # <%= attachment_image_tag モデル名, :カラム名(末尾の_idは除く),format: '拡張子名', size: "横幅数値x高さ数値" %>
-          <%= attachment_image_tag cart.product, :picture,　format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %><%= cart.product.name %>
+          <%= attachment_image_tag cart_product.product, :picture,　format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %><%= cart_product.product.name %>
         </td>
         <td>
-          <%= cart.product.price %>円
+          <%= cart_product.product.price %>円
         </td>
         <td>
-          <%= form_for cart, url: customers_cart_product_path(cart_product.id) do |f| %>
+          <%= form_for cart_product, customers_cart_product_path(cart_product.id),method: :PATCH do |f| %>
           <%= f.number_field :number %> #フォームの中身
           <%= f.submit "変更" %>
           <% end %>
         </td>
         <td>
-          # 小計
+          <%= cart_product.product.price * cart_product.number %>
         </td>
         <td>
-          <%= button_to "削除する",customers_cart_product_path(cart_product.id), method: :delete %>
+          <%= link_to "削除する", customers_cart_product_path(cart_product.id),method: :delete %> # 押された後ルートに確認してコントローラーに
         </td>
       </tr>
     </tbody>

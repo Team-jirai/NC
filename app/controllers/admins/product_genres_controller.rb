@@ -1,3 +1,6 @@
+
+class ProductGenresController < ApplicationController
+
 class Admins::ProductGenresController < ApplicationController
 
 	def index
@@ -25,5 +28,6 @@ class Admins::ProductGenresController < ApplicationController
 	def genre_params
 		params.require(:product_genre).permit(:genre, :is_valid)
 	end
+
 
 end
