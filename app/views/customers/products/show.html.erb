@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+<%= render 'layouts/sidebar' %>
+    <div class="col-xs-9">
+     <div class="top-body">
+     
+      <table class="table">
+         <tr>
+            <td>
+                <%= link_to (@product) do %> 
+            </td>
+            <td>
+                <%= attachment_image_tag (@product, :product_picture, size:"50x50", fallback:"no-image-mini.jpg") %>
+            </td>
+            <td>
+                <%= @product.name %>
+                <% end %>
+            </td>
+            <td>
+                <%= @product.description %>
+            </td>
+            <td>
+                <%= @product.proce %>
+            </td>
+            <td>
+                カートに入れるボタン
+            </td>
+        </tr>
+        <% end %>
+
+     </div>
+     </div>
+  </div>
+</div>

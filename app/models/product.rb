@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    belongs_to :product_gunre
+    belongs_to :product_genre
     has_many :cart_products
     has_many :order_details
 end
