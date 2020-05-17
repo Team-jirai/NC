@@ -1,11 +1,46 @@
-<h2>Sign up</h2>
+<h2>新規会員登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :name_sei %>
+    <%= f.text_field :name_sei, autofocus: true, autocomplete: "name_sei" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name_mei %>
+    <%= f.text_field :name_mei, autofocus: true, autocomplete: "name_mei" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :yomi_sei %>
+    <%= f.text_field :yomi_sei, autofocus: true, autocomplete: "yomi_sei" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :yomi_mei %>
+    <%= f.text_field :yomi_mei, autofocus: true, autocomplete: "yomi_mei" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mail_address %>
+    <%= f.email_field :mail_address, autofocus: true, autocomplete: "mail_address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %>
+    <%= f.email_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tell %>
+    <%= f.telephone_field :tell, autofocus: true, autocomplete: "tell" %>
   </div>
 
   <div class="field">
