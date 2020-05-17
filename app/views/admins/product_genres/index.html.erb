@@ -1,0 +1,17 @@
+<div class="midasi">
+	<h2>ジャンル一覧・追加</h2>
+</div>
+
+<div class="newgunre">
+	<%= form_for(@newgunre) do |f| %>
+		<%= f.label :ジャンル %>
+		<%= f.text_field :genre %>
+		<%= f.radio_button :is_valid, :true %>
+		<%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
+  		<%= f.radio_button :is_valid, :false %>
+  		<%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
+  	<% end %>
+</div>
+
+<div class="gunrelists">
+</div>
