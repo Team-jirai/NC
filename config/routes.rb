@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    get 'top' => 'admins/order_lists#top'
+    get 'top' => 'order_lists#top'
 
     resources :customers, only: [:index, :show, :edit, :update]
 
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
     resources :products, only: [:index, :show, :edit, :update, :create, :new]
 
-    resources :product_gunres, only: [:index, :edit, :update, :create]
+    resources :product_genres, only: [:index, :edit, :update, :create]
   end
 
 end
