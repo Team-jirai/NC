@@ -3,32 +3,20 @@
 <%= render 'layouts/sidebar' %>
     <div class="col-xs-9">
      <div class="top-body">
-     
-      <table class="table">
-         <tr>
-            <td>
-                <%= link_to (@product) do %> 
-            </td>
-            <td>
-                <%= attachment_image_tag (@product, :product_picture, size:"50x50", fallback:"no-image-mini.jpg") %>
-            </td>
-            <td>
-                <%= @product.name %>
-                <% end %>
-            </td>
-            <td>
-                <%= @product.description %>
-            </td>
-            <td>
-                <%= @product.proce %>
-            </td>
-            <td>
-                カートに入れるボタン
-            </td>
-        </tr>
+        <%= link_to @product_path do %>
         <% end %>
+        <p class="product-image">
+        <%= attachment_image_tag @product, :picture, format:'jpeg', size:"250x250" %></p>
+        <p class="product-text">
+        <p class="product-title"><%= @product.name %><br></p>
+        <%= @product.description %><br>
+        <p class="product-price"><%= @product.price_with_tax(@product.price) %><br></p>
+        </p>
+        <div class="cart">
+        <%= link_to "カートに入れる", customers_cart_products_path %><br>
+        </div>
 
      </div>
-     </div>
+    </div>
   </div>
 </div>

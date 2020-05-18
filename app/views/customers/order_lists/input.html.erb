@@ -1,6 +1,6 @@
 <div>
   <h3>支払方法</h3>
-	<%= form_for @order_list, customers_order_list_confirm_path(order_list.id),method: :POST do |f| %>
+	<%= form_for @order_list, url: customers_order_lists_confirm_path, method: :POST do |f| %>
 	<div class="field">
       <label>
     	<%= f.radio_button :payment_method, "クレジットカード" %>クレジットカード
@@ -9,10 +9,10 @@
         <%= f.radio_button :payment_method, "銀行振込" %>銀行振込
       </label>
       <!-- f.radio_button カラム名, 実際にテーブルに登録する値%>選択肢に表示する文字 -->
-  	 </div>
+  	</div>
 
   <h3>お届け先</h3>
  	 <div class="field">
- 	 	
   	 </div>
+  	 <% end %>
 </div>

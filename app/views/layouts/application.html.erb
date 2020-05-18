@@ -26,18 +26,18 @@
           <ul class="nav navbar-nav navbar-right">
             <% if customer_signed_in? %>
               <li><%= link_to 'マイページ', customers_mypage_path %></li>
-              <li><%= link_to '商品一覧' %></li>
+              <li><%= link_to '商品一覧', 'http://localhost:3000/customers/products/' %></li>
               <li><%= link_to 'カート' %></li>
-              <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+              <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li><!-- 変更 -->
             <% elsif admin_signed_in? %>
               <li><%= link_to '商品一覧' %></li>
               <li><%= link_to '会員一覧' %></li>
               <li><%= link_to '注文履歴一覧' %></li>
               <li><%= link_to 'ジャンル一覧' %></li>
-              <li><%= link_to 'ログアウト' %></li>
+              <li><%= link_to 'ログアウト', '/customers/sign_out' %></li>
             <% else %>
               <li><%= link_to '商品一覧' %></li>
-              <li><%= link_to '会員登録' %></li>
+              <li><%= link_to '会員登録', '/customers/sign_up' %></li>
               <li><%= link_to 'ログイン', new_customer_session_path %></li>
             <% end %>
           </ul>
