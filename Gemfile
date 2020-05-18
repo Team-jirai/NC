@@ -78,4 +78,6 @@ gem 'kaminari','~> 1.1.1' #ページ区切る為
 
 gem 'jp_prefecture' # 住所機能
 
+gem 'enum_help' #enumの日本語化
+
 

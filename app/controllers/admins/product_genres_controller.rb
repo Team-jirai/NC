@@ -1,6 +1,3 @@
-
-class ProductGenresController < ApplicationController
-
 class Admins::ProductGenresController < ApplicationController
 
 	def index
