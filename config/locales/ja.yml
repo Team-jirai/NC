@@ -4,3 +4,17 @@ ja:
       sales_status:
         sale: "販売中"
         soldout: "売切"
+    order_list:
+      status:
+        waitingpayment: "入金待ち"
+        paymentok: "入金確認"
+        making: "制作中"
+        preparation: "発送準備中"
+        finishshipping: "発送済み"
+    order_detail:
+      making_status:
+        cannotmaking: "着手不可"
+        waitmaking: "制作待ち"
+        nowmaking: "制作中"
+        finishmaking: "制作完了"
+
