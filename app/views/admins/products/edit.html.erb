@@ -3,7 +3,7 @@
 </div>
 
 <div class="product_form">
-<%= form_for @product, url: admins_product_path do |f| %>
+<%= form_for @product, url: admins_product_path(@product.id) do |f| %>
 		<div class="picture">
 			<%= f.attachment_field :picture %>
 		</div>
