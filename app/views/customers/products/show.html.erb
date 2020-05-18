@@ -4,8 +4,7 @@
     <div class="col-xs-9">
      <div class="top-body">
      
-                <%= link_to @product_path do %> 
-                <%= attachment_image_tag @product, :picture_id, format:'jpeg', size:"20x20" %>
+                <%= attachment_image_tag @product, :picture, format:'jpeg', size:"20x20" %>
                 <%= @product.name %>
                 <%= @product.description %>
                 <%= @product.price %>
