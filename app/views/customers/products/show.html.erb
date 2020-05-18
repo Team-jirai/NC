@@ -3,13 +3,18 @@
 <%= render 'layouts/sidebar' %>
     <div class="col-xs-9">
      <div class="top-body">
-                <%= link_to @product do %>
-                <%= attachment_image_tag @product, :picture, format:'jpeg', size:"150x150" %>
-                <%= @product.name %>
-                <%= @product.description %>
-                <%= @product.price %>
-                <%= link_to "カートへ入れる","/customers/cart_products/" %>
-                <% end %>
+        <%= link_to @product_path do %>
+        <% end %>
+        <p class="product-image">
+        <%= attachment_image_tag @product, :picture, format:'jpeg', size:"250x250" %></p>
+        <p class="product-text">
+        <p class="product-title"><%= @product.name %><br></p>
+        <%= @product.description %><br>
+        <p class="product-price"><%= @product.price_with_tax(@product.price) %><br></p>
+        </p>
+        <div class="cart">
+        <%= link_to "カートに入れる", customers_cart_products_path %><br>
+        </div>
 
      </div>
     </div>
