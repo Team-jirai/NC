@@ -1,12 +1,13 @@
 
-<div>
+<div class="container">
+  <div class="row">
   <%= link_to "カートを空にする", customers_cart_products_empty_cart_path, method: :delete %>
 </div>
 
 
 
 <div>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>商品名</th>
@@ -20,7 +21,7 @@
       <% @cart_products.each do |cart_product| %>
       <tr>
         <td>
-          <!-- <%= attachment_image_tag モデル名, :カラム名(末尾の_idは除く),format: '拡張子名', size: "横幅数値x高さ数値" %> -->
+
           <%= attachment_image_tag cart_product.product, :picture,　format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %><%= cart_product.product.name %>
         </td>
         <td>
@@ -28,7 +29,7 @@
         </td>
         <td>
           <%= form_for cart_product, customers_cart_product_path(cart_product.id),method: :PATCH do |f| %>
-          <%= f.number_field :number %><!-- #フォームの中身 -->
+          <%= f.number_field :number %><!--フォームの中身 -->
           <%= f.submit "変更" %>
           <% end %>
         </td>
@@ -36,23 +37,24 @@
           <%= cart_product.product.price * cart_product.number %>
         </td>
         <td>
-          <%= link_to "削除する", customers_cart_product_path(cart_product.id),method: :delete %> <!-- # 押された後ルートに確認してコントローラーに -->
+          <%= link_to "削除する", customers_cart_product_path(cart_product.id),method: :delete %> <!-- 押された後ルートに確認してコントローラーに -->
         </td>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
 <div>
-  <%= link_to "買い物を続ける",products_path %><!-- # 商品一覧画面に遷移 -->
+  <%= link_to "買い物を続ける", customers_products_path %><!-- 商品一覧画面に遷移 -->
 </div>
 <div>
   <table>
       <tr>
         <th>合計金額</th>
-        <td></td><!-- #合計金額記述 -->
+        <td></td><!-- 合計金額記述 -->
       </tr>
   </table>
 </div>
 <div>
-  <%= link_to "情報入力に進む",customers_order_list_path(current_user.id) %> # 情報入力に進むボタン
+  <%= link_to "情報入力に進む",customers_order_list_path(current_customer.id) %><!-- 情報入力に進むボタン -->
 </div>

@@ -5,7 +5,16 @@ class Customers::CartProductsController < ApplicationController
   end
 
   def create
-
+    @cart_product = CartProduct.new(cart_product_params)
+    # CartProduct.new(cart_product_params)=不完全な箱（saveがされていない為）
+    @cart_product.customer_id = current_user.id
+    if @cart_product.save
+    # @cart_productには１つのレコードが保存
+    redirect_to customers_order_list_path(@cart_product.id)
+    # (@cart_product.id)で保存されたから次のページに飛べる
+    else
+      redirect_to request.referer # 遷移前のURLを取得
+    end
   end
 
   def update
@@ -29,4 +38,5 @@ private
   def cart_product_params
     params.require(:cart_product).permit(:number)
   end
+end
 end
