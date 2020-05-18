@@ -78,13 +78,6 @@ ActiveRecord::Schema.define(version: 2020_05_16_042759) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_genres", force: :cascade do |t|
-    t.string "genre"
-    t.boolean "is_valid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.integer "product_genre_id"
     t.string "name"
