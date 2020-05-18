@@ -3,18 +3,24 @@
 <%= render 'layouts/sidebar' %>
     <div class="col-xs-9">
      <div class="main-body">
-    	<!-- ここに画像を背景にする -->
-    	<p>ようこそ、NaganoCakeへ！</p>
-    	<p>このサイトは、ケーキ販売のECサイトになります。</p>
-    	<p>会員でない方も商品の閲覧はできますが、</p>
-    	<p>購入には会員登録が必要になります。</p>
+        <div class="main-visual">
+        　<p class="main-text">
+        	ようこそ、NaganoCakeへ！<br>
+        	このサイトは、ケーキ販売のECサイトになります。<br>
+        	会員でない方も商品の閲覧はできますが、<br>
+        	購入には会員登録が必要になります。<br>
+          </p>
+        </div>
 
-   　<h2>オススメ商品</h2>
-　　　<p>※商品画像</p>
-     <p>※商品名</p>
-     <p>※商品価格</p>
-
-     <% link_to "もっと見る>", "/products/index" %>
+   　<h3>オススメ商品</h3>
+      <div class="osusume-product">
+        <% @products.each do |product| %>
+           <%= attachment_image_tag product, :picture_id, format:'jpeg', size:"50x50" %>　<!-- 商品画像 -->
+           <%= product.name %> <!-- 商品名 -->
+           <%= product.price %>　<!-- 商品価格 -->
+        <% end %>
+      </div>
+     <%= link_to "もっと見る>", "/customers/products/" %>
      </div>
      </div>
   </div>
