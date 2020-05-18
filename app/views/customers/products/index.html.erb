@@ -3,15 +3,26 @@
 <%= render 'layouts/sidebar' %>
     <div class="col-xs-9">
      <div class="main-body">
-      <h2>商品一覧</h2><p>全※件</p>
-       <% @products.each do |product| %>
-           <%= attachment_image_tag product, :picture_id, format:'jpeg', size:"50x50" %>　<!-- 商品画像 -->
-           <%= product.name %> <!-- 商品名 -->
-           <%= product.price %>　<!-- 商品価格 -->
-        <% end %>
+      <div class="row">
+          <h2>商品一覧</h2><%= link_to "全#{Product.all.count}件" %>
+          <% @products.each do |product| %>
+          <div class="col-md-3">
+             <div>
+              　<div class="product-page">
+                <%= link_to @product_path do %>
+                  <%= attachment_image_tag product, :picture_id_change, format:'jpeg', size:"20x20" %>
+                  <%= product.name %><br>
+                  <p><%= product.price %>円</p><br>
+                </div>
+                <% end %>
+             </div>
+           </div>
+         <% end %>
+       </div>
+　　　　<%= paginate @products %>
      </div>
      </div>
   </div>
 </div>
-</div>
+
      
