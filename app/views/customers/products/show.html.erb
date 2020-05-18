@@ -3,8 +3,8 @@
 <%= render 'layouts/sidebar' %>
     <div class="col-xs-9">
      <div class="top-body">
-     
-                <%= attachment_image_tag @product, :picture, format:'jpeg', size:"20x20" %>
+                <%= link_to @product do %>
+                <%= attachment_image_tag @product, :picture, format:'jpeg', size:"150x150" %>
                 <%= @product.name %>
                 <%= @product.description %>
                 <%= @product.price %>
