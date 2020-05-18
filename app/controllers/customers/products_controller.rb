@@ -1,18 +1,21 @@
 class Customers::ProductsController < ApplicationController
 
 def top
- @products = Product.page(params[:@page]).per(4)
+ @products = Product.page(params[:page]).per(4)
 end
 
 def index
  @product = Product.new
- @products = Product.page(params[:@page]).per(8)
+ @products = Product.page(params[:page]).per(8)
 
 end
 
 def show
  @product = Product.find(params[:id])
  product = Product.new
+end
+
+def create
 end
 
 
