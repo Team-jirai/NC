@@ -1,0 +1,6 @@
+ja:
+  enums:
+    product:
+      sales_status:
+        sale: "販売中"
+        soldout: "売切"
