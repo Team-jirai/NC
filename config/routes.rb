@@ -15,13 +15,13 @@ Rails.application.routes.draw do
   namespace :customers do
     resources :products, only: [:index, :show]
 
-    resources :cart_products, only: [:show, :update, :destroy, :create]
-    delete 'cart_products/empty_cart' => 'customers/cart_products#empty_cart'
+    resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
+    delete 'cart_products/empty_cart' => 'cart_products#empty_cart'
 
-    resources :order_lists, only: [:index, :show, :create]
-    get 'order_lists/:id/input' => 'customers/order_lists#input'
-    post 'order_lists/:id/confirm' => 'customers/order_lists#confirm'
-    get 'order_lists/thanks' => 'customers/order_lists#thanks'
+    get 'order_lists/input' => 'order_lists#input'# 順番変更とcustomers/削除
+    post 'order_lists/confirm' => 'order_lists#confirm'# 順番変更とcustomers/削除
+    get 'order_lists/thanks' => 'order_lists#thanks'# 順番変更とcustomers/削除
+    resources :order_lists, only: [:index, :show, :create]# 順番変更
 
     resources :shipping_addresses, only: [:index, :edit, :update, :create, :destroy]
 
