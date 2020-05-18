@@ -3,62 +3,95 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name_sei %>
-    <%= f.text_field :name_sei, autofocus: true, autocomplete: "name_sei" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :name_mei %>
-    <%= f.text_field :name_mei, autofocus: true, autocomplete: "name_mei" %>
-  </div>
+  <table class="table">
+    <tr>
+      <th>名前</th>
+      <td>
+        <div class="field">
+          <%= f.label :姓 %>
+          <%= f.text_field :name_sei, autofocus: true, autocomplete: "name_sei" %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :名 %>
+          <%= f.text_field :name_mei, autofocus: true, autocomplete: "name_mei" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td>
+        <div class="field">
+          <%= f.label :セイ %>
+          <%= f.text_field :yomi_sei, autofocus: true, autocomplete: "yomi_sei" %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :メイ %>
+          <%= f.text_field :yomi_mei, autofocus: true, autocomplete: "yomi_mei" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td colspan="2">
+        <div class="field">
+          <%= f.email_field :mail_address, autofocus: true, autocomplete: "mail_address" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>郵便番号（ハイフンなし）</th>
+      <td colspan="2">
+        <div class="field">
+          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td colspan="2">
+        <div class="field">
+          <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td colspan="2">
+        <div class="field">
+          <%= f.telephone_field :tell, autofocus: true, autocomplete: "tell" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>パスワード（６文字以上）</th>
+      <td colspan="2">
+        <div class="field">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>パスワード（確認用）</th>
+      <td colspan="2">
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      </td>
+    </tr>
+  </table>
+    <div class="actions">
+      <%= f.submit "新規登録" %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :yomi_sei %>
-    <%= f.text_field :yomi_sei, autofocus: true, autocomplete: "yomi_sei" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :yomi_mei %>
-    <%= f.text_field :yomi_mei, autofocus: true, autocomplete: "yomi_mei" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mail_address %>
-    <%= f.email_field :mail_address, autofocus: true, autocomplete: "mail_address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postal_code %>
-    <%= f.email_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tell %>
-    <%= f.telephone_field :tell, autofocus: true, autocomplete: "tell" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
 <%= render "customers/shared/links" %>
