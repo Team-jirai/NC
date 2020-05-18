@@ -2,28 +2,16 @@
   <div class="row">
 <%= render 'layouts/sidebar' %>
     <div class="col-xs-9">
-     <div class="index-body">
+     <div class="main-body">
       <h2>商品一覧</h2><p>全※件</p>
-      <% @products.each do |product| %>
-      <%= attachment_image_tag product.product, :product_picture, format:'jpeg', size:"50x50",fallback: "no-image-mini.jpeg" %>
-           <%= link_to product.name %>
-           <%= link_to product.price %>
-           <% end %>
-
+       <% @products.each do |product| %>
+           <%= attachment_image_tag product, :picture_id, format:'jpeg', size:"50x50" %>　<!-- 商品画像 -->
+           <%= product.name %> <!-- 商品名 -->
+           <%= product.price %>　<!-- 商品価格 -->
+        <% end %>
      </div>
      </div>
   </div>
 </div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-m-4" id="sticky-sidebar">
-      Sidebar
-    </div>
-    <div class="col-m-8" id="main">
-      Main Area
-    </div>
-  </div>
 </div>
      
