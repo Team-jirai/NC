@@ -59,4 +59,17 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def after_sign_up_path_for(resource)
+    customers_mypage_path
+  end
+
+  private
+  def sign_up_params
+    params.require(:customer).permit(:name_sei, :name_mei, :yomi_sei, :yomi_mei, :postal_code, :address, :tell, :password, :email)
+  end
+
+
+
 end
+
+
