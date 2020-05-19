@@ -21,17 +21,27 @@
                   <tr>
 
 					<td>
-						<%= shipping_address.postal_code %>
+						<%=  %><!-- ※注文日 -->
 					</td>
 					<td>
-						<%= shipping_address.address %>
+						<%= shipping_address.address %><!-- ※配送先 -->
 					</td>
 					<td>
-						<%= shipping_address.name %>
+						<%=  %><!-- ※注文商品 -->
 					</td>
 					<td>
-						<div class="update_destroy">
-						<%= link_to "編集する", edit_customers_shipping_address_path(shipping_address) %>
-						<%= link_to "削除する", customers_shipping_address_path(shipping_address), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
-                         </div>
-						<% end %>
+						<%= order_list.total_price %><!-- ※支払い金額 -->
+					</td>
+					<td>
+						<%= order_list.status %><!-- ※ステータス -->
+					</td>
+					<td>
+						<%= link_to "表示する", customers_order_list_path(@order_list.id) %><!-- ※注文詳細 -->
+					</td>
+
+					    <% end %>
+			      </tr>
+			     </tbody>
+		   </table>
+    </div>
+</div>
