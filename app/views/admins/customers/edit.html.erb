@@ -34,10 +34,10 @@
 		</div>
 		<div class="customer_status">
 			<%= f.label :顧客ステータス %>
-			<%= f.radio_button :status, :true %>
-			<%= f.label :status, "有効", {value: :true, style: "display: inline-block;"} %>
-  			<%= f.radio_button :status, :false %>
-  			<%= f.label :status, "退会済み", {value: :false, style: "display: inline-block;"} %>
+			<%= f.radio_button :status, :effective %>
+			<%= f.label :status, "有効", {style: "display: inline-block;"} %>
+  			<%= f.radio_button :status, :uneffective %>
+  			<%= f.label :status, "退会済み", {style: "display: inline-block;"} %>
 		</div>
 		<div class="pruduct_button">
   			<%= f.submit '変更を保存する' %>
