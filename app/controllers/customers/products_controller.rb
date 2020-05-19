@@ -13,7 +13,7 @@ end
 def show
  @product = Product.find(params[:id])
  product = Product.new
- @cart_product = CartProduct.new #追加
+ @product_new = CartProduct.new #formforで使うための空のモデル(空の箱),CartProductのコントローラーに送る。
 end
 
 def create

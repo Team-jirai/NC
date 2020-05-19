@@ -28,8 +28,8 @@
           <%= cart_product.product.price %>円
         </td>
         <td>
-          <%= form_for cart_product, customers_cart_product_path(cart_product.id),method: :PATCH do |f| %>
-          <%= f.number_field :number %><!--フォームの中身 -->
+          <%= form_for cart_product, url: customers_cart_product_path(cart_product.id),method: :PATCH do |f| %>
+          <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %><!--フォームの中身 -->
           <%= f.submit "変更" %>
           <% end %>
         </td>
@@ -56,5 +56,5 @@
   </table>
 </div>
 <div>
-  <%= link_to "情報入力に進む",customers_order_list_path %><!-- 情報入力に進むボタン -->
+  <%= link_to "情報入力に進む",customers_order_lists_input_path %><!-- 情報入力に進むボタン -->
 </div>
