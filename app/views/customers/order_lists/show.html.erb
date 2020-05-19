@@ -1,0 +1,72 @@
+<div class="container">
+	<div class="row">
+	    <div class="order_list_show_title">
+	       <h3>注文詳細履歴</h3>
+        </div>
+           <div class="col-xs-7"><!-- 注文情報 -->
+
+           	 <h4>注文情報</h4>
+
+
+           </div>
+           <div class="col-xs-5"><!-- 請求情報 -->
+
+           	 <h4>請求情報</h4>
+
+	           	 <table>
+
+				  <tr>
+				    <th>名前</th><td>さとう</td><td>のざわ</td><td>まなべ</td>
+				  </tr>
+
+				  <tr>
+				    <th>年齢</th><td>19</td><td>24</td><td>20</td>
+				  </tr>
+
+				  <tr>
+				    <th>血液型</th><td>A型</td><td>O型</td><td>B型</td>
+				  </tr>
+
+				 </table>
+
+           </div>
+           <div class="row"><!-- 注文内容 -->
+　　　　
+　　　　　　　　<h4>注文内容</h4>
+　
+　　　　　　　　<table class="table table-bordered">
+           	  <thead>
+           	     <tr class="active">
+           	    	 <th>商品</th>
+           	    	 <th>単価(税込)</th>
+           	    	 <th>個数</th>
+           	    	 <th>小計</th>
+           	      </tr>
+           	   </thead>
+
+           	   <tbody>
+           	   	　　　　 <% @order_list.order_details.each do |order_detail| %>
+                  <tr>
+
+					<td>
+						<%= order_detail.product.name. %><!-- ※商品名 -->
+					</td>
+					<td>
+						<%= order_detail.product.price %><!-- ※商品の単価(税込) -->
+					</td>
+					<td>
+						<%= order_detail.product.number %><!-- ※商品の個数 -->
+					</td>
+					<td>
+						<%= order_detail.(product.price * product.number) %><!-- ※小計 -->
+					</td>
+
+					    <% end %>
+			      </tr>
+			     </tbody>
+		   　　　</table>
+
+
+           </div>
+	</div>
+</div>

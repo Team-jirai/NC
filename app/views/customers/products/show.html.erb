@@ -18,7 +18,7 @@
         <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %>
         <%= f.hidden_field :product_id, :value => @product.id %>
         <!-- 商品のidをカート商品idに入れる -->
-        <%= f.submit "カートに入れる" %><br>
+        <%= f.submit "カートに入れる", class:"btn btn-primary" %><br>
         <% end %>
         <!-- method: :POSTはPOSTに飛ぶための記述 -->
 
