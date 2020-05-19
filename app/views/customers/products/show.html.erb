@@ -7,13 +7,14 @@
         <% end %>
         <p class="product-image">
         <%= attachment_image_tag @product, :picture, format:'jpeg', size:"250x250" %></p>
-        <p class="product-text">
+        <div class="product-text">
         <p class="product-title"><%= @product.name %><br></p>
-        <%= @product.description %><br>
-        <p class="product-price"><%= @product.price_with_tax(@product.price) %><br></p>
-        </p>
+        <p class="product-description"><%= @product.description %><br></p>
+        <p class="product-price">¥<%= @product.price_with_tax(@product.price) %>(税込)</p>
+        </div>
         <div class="cart">
-        <%= link_to "カートに入れる", customers_cart_products_path %><br>
+        <%= select(:cart_product, :number, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]],{include_blank: '個数選択'}, class: 'sentaku' )%>
+        <%= link_to "カートに入れる", customers_cart_products_path, class:"btn btn-primary"%><br>
         </div>
 
      </div>
