@@ -13,11 +13,9 @@ Rails.application.routes.draw do
   get 'customers/withdraw' => 'customers#withdraw'
 
   namespace :customers do
-    resources :products, only: [:index, :show] do
-    resources :cart_products, only: [:index, :update, :destroy, :create] #do 追加
-    end
+    resources :products, only: [:index, :show]
 
-    # resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
+    resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
     delete 'cart_products/empty_cart' => 'cart_products#empty_cart'
 
     get 'order_lists/input' => 'order_lists#input'# 順番変更とcustomers/削除

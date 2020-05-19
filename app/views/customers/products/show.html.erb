@@ -14,7 +14,7 @@
         </div>
 
         <div class="cart">
-        <%= form_for @product_new, url: customers_cart_products_path, method: :POST do |f| %>
+        <%= form_for @product_new, url: customers_products_path, method: :POST do |f| %>
         <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %>
         <%= f.hidden_field :product_id, :value => @product.id %>
         <!-- 商品のidをカート商品idに入れる -->
