@@ -9,5 +9,5 @@ class Customer < ApplicationRecord
   has_many :order_lists
   has_many :shipping_addresses
   enum status:{effective:true, uneffective:false}
-  validates :status, inclusion: {in: ["effective", "uneffective"]}
+  # validates :status, inclusion: {in: ["effective", "uneffective"]}
 end

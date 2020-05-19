@@ -2,7 +2,7 @@ class Customers::ShippingAddressesController < ApplicationController
 
 def index
  @shipping_address = ShippingAddress.new
- @shipping_addresses = ShippingAddress.all #一覧表示
+ @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id) #一覧表示
 end
 
 
