@@ -1,6 +1,8 @@
 class Customers::OrderListsController < ApplicationController
 
-  def index
+  def index #注文履歴一覧
+    @order_list = OrderList.new
+    @order_lists = OrderList.all
   end
 
   def show
