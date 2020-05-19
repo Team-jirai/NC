@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+	    <div class="orderlist_title">
+	       <h3>注文履歴一覧</h3>
+	    </div>
+
+           <table class="table table-bordered">
+           	  <thead>
+           	     <tr class="active">
+           	    	 <th>注文日</th>
+           	    	 <th>配送先</th>
+           	    	 <th>注文商品</th>
+           	    	 <th>支払金額</th>
+           	    	 <th>ステータス</th>
+           	    	 <th>注文詳細</th>
+           	      </tr>
+           	   </thead>
+
+           	   <tbody>
+           	   	　　　　 <% @order_lists.each do |order_list| %>
+                  <tr>
+
+					<td>
+						<%= shipping_address.postal_code %>
+					</td>
+					<td>
+						<%= shipping_address.address %>
+					</td>
+					<td>
+						<%= shipping_address.name %>
+					</td>
+					<td>
+						<div class="update_destroy">
+						<%= link_to "編集する", edit_customers_shipping_address_path(shipping_address) %>
+						<%= link_to "削除する", customers_shipping_address_path(shipping_address), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+                         </div>
+						<% end %>
