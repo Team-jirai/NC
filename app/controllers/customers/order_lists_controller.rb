@@ -7,7 +7,7 @@ class Customers::OrderListsController < ApplicationController
   end
 
   def input
-  	@order_list = OrderList.new
+
   end
 
   def confirm
