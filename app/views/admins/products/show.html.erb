@@ -19,8 +19,8 @@
 			<%= @product.product_genre.genre %>
 		</div>
 		<div class="product_price">
-			<div class="product_label"><p>税抜価格</p></div>
-			<%= @product.price %>
+			<div class="product_label"><p>税込価格（税抜価格）</p></div>
+			<%= converting_to_jpy(@product.price_with_tax(@product.price)) %>（<%= converting_to_jpy(@product.price) %>）
 		</div>
 		<div class="product_status">
 			<div class="product_label"><p>商品ステータス</p></div>

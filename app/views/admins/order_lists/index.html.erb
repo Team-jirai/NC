@@ -15,9 +15,9 @@
 	<tbody>
 		<% @order_lists.each do |order_list| %>
 		<tr>
-			<td><a href="<%= admins_order_list_path(order_list.id) %>"><%= order_list.created_at%></a></td>
+			<td><a href="<%= admins_order_list_path(order_list.id) %>"><%= l order_list.created_at%></a></td>
 			<td><%= order_list.customer.name_sei%><%= order_list.customer.name_mei%></td>
-			<td><%= order_list.number%></td>
+			<td><%= order_list.order_details.all.sum(:number) %></td>
 			<td><%= order_list.status_i18n%></td>
 		</tr>
 		<% end %>

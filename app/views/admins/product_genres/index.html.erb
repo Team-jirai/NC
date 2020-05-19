@@ -27,7 +27,7 @@
 		<% @genres.each do |genre| %>
 		<tr>
 			<td><%= genre.genre %></td>
-			<td><%= genre.is_valid %></td>
+			<td><%= genre.is_valid_i18n %></td>
 			<td><%= link_to "編集", edit_admins_product_genre_path(genre.id) %></td>
 		</tr>
 		<% end %>

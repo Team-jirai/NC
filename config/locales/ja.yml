@@ -17,4 +17,15 @@ ja:
         waitmaking: "制作待ち"
         nowmaking: "制作中"
         finishmaking: "制作完了"
+    customer:
+      status:
+        effective: "有効"
+        uneffective: "退会済み"
+    product_genre:
+      is_valid:
+        effectiveness: "有効"
+        uneffectiveness: "無効"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
 

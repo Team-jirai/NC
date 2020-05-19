@@ -15,6 +15,7 @@ class Admins::OrderListsController < ApplicationController
 	def update
 		@order_list = OrderList.find(params[:id])
 		@order_list.update(order_list_params)
+		redirect_back(fallback_location: root_path)
 	end
 
 	private
