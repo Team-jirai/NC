@@ -38,7 +38,9 @@ class Customers::CartProductsController < ApplicationController
 
 private
   def cart_product_params
+
     params.require(:cart_product).permit(:number, :product_id) #:product_idでどの商品か判断している。paramsはformから送られてきたのを許可するための記述。
+
   end
 end
 
