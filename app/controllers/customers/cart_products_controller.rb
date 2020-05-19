@@ -1,6 +1,7 @@
 class Customers::CartProductsController < ApplicationController
 
   def index
+    @cart_product = CartProduct.new(:number => 1)
   	@cart_products = CartProduct.all # cart_product/showのカート商品一覧表示の為
   end
 
