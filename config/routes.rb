@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'customers/withdraw' => 'customers#withdraw'
 
 
+
   namespace :customers do
     resources :products, only: [:index, :show]
     
