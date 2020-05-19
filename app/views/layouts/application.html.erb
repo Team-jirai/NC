@@ -30,11 +30,11 @@
               <li><%= link_to 'カート' %></li>
               <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li><!-- 変更 -->
             <% elsif admin_signed_in? %>
-              <li><%= link_to '商品一覧' %></li>
-              <li><%= link_to '会員一覧' %></li>
-              <li><%= link_to '注文履歴一覧' %></li>
-              <li><%= link_to 'ジャンル一覧' %></li>
-              <li><%= link_to 'ログアウト', '/customers/sign_out' %></li>
+              <li><%= link_to '商品一覧', admins_products_path %></li>
+              <li><%= link_to '会員一覧', admins_customers_path %></li>
+              <li><%= link_to '注文履歴一覧', admins_order_lists_path %></li>
+              <li><%= link_to 'ジャンル一覧', admins_product_genres_path %></li>
+              <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to '商品一覧' %></li>
               <li><%= link_to '会員登録', '/customers/sign_up' %></li>
@@ -47,8 +47,10 @@
     </header>
 
     <div class="container">
-      <%= yield %>
-      <p id="notice"><%= notice %></p>
+      <div class="main">
+        <%= yield %>
+        <p id="notice"><%= notice %></p>
+      </div>
     </div>
   </body>
 </html>

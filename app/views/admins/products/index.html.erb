@@ -23,7 +23,7 @@
 		<tr>
 			<td><%= product.id %></td>
 			<td><a href="<%= admins_product_path(product.id) %>"><%= product.name %></a></td>
-			<td><%= product.price %></td>
+			<td><%= converting_to_jpy(product.price) %></td>
 			<td><%= product.product_genre.genre %></td>
 			<td><%= product.sales_status_i18n %></td>
 		</tr>
