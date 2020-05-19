@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :customers, controllers: {
-  sessions:      'customers/sessions',
-  passwords:     'customers/passwords',
-  registrations: 'customers/registrations'
-  }
+
+
+
+ devise_for :customers, skip: :all
+ devise_scope :customer do
+   get '/customers/sign_in' => 'customers/sessions#new',as:'new_customer_session'
+   post '/customers/sign_in' => 'customers/sessions#create',as:'customer_session'
+   delete '/customers/sign_out' => 'customers/sessions#destroy',as:'destroy_customer_session'
+   get '/customers/sign_up' => 'customers/registrations#new',as:'new_customer_registration'
+   post '/customers' => 'customers/registrations#create',as:'customer_registration'
+ end
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'customers/products#top'
