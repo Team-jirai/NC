@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   get 'customers/mypage' => 'customers#mypage'
   get 'customers/withdraw' => 'customers#withdraw'
 
+
+
   namespace :customers do
     resources :products, only: [:index, :show]
-
+    
     resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
     delete 'cart_products/empty_cart' => 'cart_products#empty_cart'
 
