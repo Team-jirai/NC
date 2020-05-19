@@ -12,9 +12,12 @@
         <p class="product-description"><%= @product.description %><br></p>
         <p class="product-price">¥<%= @product.price_with_tax(@product.price) %>(税込)</p>
         </div>
-        <div class="cart">
-        <%= select(:cart_product, :number, [['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]],{include_blank: '個数選択'}, class: 'sentaku' )%>
-        <%= link_to "カートに入れる", customers_cart_products_path, class:"btn btn-primary"%><br>
+        
+        <div class="cart">      
+        <%= form_for [@product, @cart_product], url: customers_product_cart_products_path(@product), method: :post do |f| %>
+        <%= f.number_field :number %>
+        <%= f.submit "カートに入れる", class:"btn btn-primary" %>
+        <% end %>
         </div>
 
      </div>
