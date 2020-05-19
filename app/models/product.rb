@@ -8,4 +8,5 @@ class Product < ApplicationRecord
     def price_with_tax(price)
       (price * 1.1).to_i
     end
+
 end
