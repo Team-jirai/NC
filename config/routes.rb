@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   namespace :customers do
     resources :products, only: [:index, :show]
-    
     resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
     delete 'cart_products/empty_cart' => 'cart_products#empty_cart'
 
