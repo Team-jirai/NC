@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   has_many :cart_products
   has_many :order_lists
   has_many :shipping_addresses
-  enum status:{effective:true, uneffective:false}
+  def active_for_authentication?
+    super && (self.status == true)
+  end
   # validates :status, inclusion: {in: ["effective", "uneffective"]}
 end

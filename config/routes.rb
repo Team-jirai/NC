@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resource :customers, only: [:edit, :update, :destroy]
   get 'customers/mypage' => 'customers#mypage'
   get 'customers/withdraw' => 'customers#withdraw'
+  put "customers/withdraw" => "customers#withdraw_update"
 
 
 
