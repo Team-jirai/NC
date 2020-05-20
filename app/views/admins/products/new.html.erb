@@ -1,34 +1,59 @@
 <div class="midasi">
-	<h3>商品新規登録</h3>
+	<h3 class="midasitext">商品新規登録</h3>
 </div>
 
 <div class="product_form">
 <%= form_for @product, url: admins_products_path do |f| %>
+	<div class="admin_picture">
 		<div class="picture">
 			<%= f.attachment_field :picture %>
 		</div>
+	</div>
+
+	<div class="explain">
 		<div class="product_name">
-			<%= f.label :商品名 %>
-			<%= f.text_field :name %>
+			<div class="admin_label">
+				<%= f.label :商品名 %>
+			</div>
+			<div class="explain_text">
+				<%= f.text_field :name %>
+			</div>
 		</div>
 		<div class="product_description">
-			<%= f.label :商品説明 %>
-			<%= f.text_area :description %>
+			<div class="admin_label">
+				<%= f.label :商品説明 %>
+			</div>
+			<div class="explain_text">
+				<%= f.text_area :description %>
+			</div>
 		</div>
 		<div class="product_genre">
-			<%= f.label :ジャンル %>
-			<%= f.collection_select :product_genre_id, ProductGenre.all, :id, :genre, :prompt => "ジャンル" %>
+			<div class="admin_label">
+				<%= f.label :ジャンル %>
+			</div>
+			<div class="explain_text">
+				<%= f.collection_select :product_genre_id, ProductGenre.all, :id, :genre, :prompt => "ジャンル" %>
+			</div>
 		</div>
 		<div class="product_price">
-			<%= f.label :税抜価格 %>
-			<%= f.text_field :price %>
+			<div class="admin_label">
+				<%= f.label :税抜価格 %>
+			</div>
+			<div class="explain_text">
+				<%= f.text_field :price %>
+			</div>
 		</div>
 		<div class="product_status">
-			<%= f.label :販売ステータス %>
-			<%= f.select :sales_status,options_for_select(Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}) %>
+			<div class="admin_label">
+				<%= f.label :販売ステータス %>
+			</div>
+			<div class="explain_text">
+				<%= f.select :sales_status,options_for_select(Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}) %>
+			</div>
 		</div>
-		<div class="pruduct_button">
+		<div class="admin_button">
   			<%= f.submit '新規登録' %>
   		</div>
+  	</div>
 <% end %>
 </div>
