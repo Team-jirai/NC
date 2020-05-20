@@ -7,7 +7,7 @@ end
 def index
  @product = Product.new
  @products = Product.page(params[:page]).per(8)
-
+ @genres = ProductGenre.all
 end
 
 def show
