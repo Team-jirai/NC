@@ -49,9 +49,9 @@
 			<div class="admin_c_label">
 				<%= f.label :顧客ステータス %>
 			</div>
-			<%= f.radio_button :status, :effective %>
+			<%= f.radio_button :status, :true %>
 			<%= f.label :status, "有効", {style: "display: inline-block;"} %>
-  			<%= f.radio_button :status, :uneffective %>
+  			<%= f.radio_button :status, :false %>
   			<%= f.label :status, "退会済み", {style: "display: inline-block;"} %>
 		</div>
 		<div class="c_button">
