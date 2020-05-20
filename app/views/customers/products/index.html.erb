@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-<%= render 'layouts/sidebar' %>
-    <div class="col-xs-9">
+  
+  <%= render 'layouts/sidebar' %>
+
+    <div class="col-xs-10">
      <div class="main-body">
       <div class="row">
-          <h2>商品一覧</h2><p class="count"><%= link_to "全#{Product.all.count}件" %></p>
+          <h2>商品一覧<i class="fas fa-cookie-bite"></i></h2><p class="count"><%= link_to "全#{Product.all.count}件" %></p>
           <% @products.each do |product| %>
           <div class="col-md-3">
              <div>

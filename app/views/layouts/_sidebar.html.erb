@@ -1,13 +1,10 @@
-<div class="col-xs-3">
- <div class="sidebar">
+<div class="col-xs-2">
+  <div class="sidebar">
 
-	<h3>ジャンル検索</h3>
-	<ul>
-	<li><%= link_to "ケーキ","/products_junre/1" %></li>
-	<li><%= link_to "焼き菓子","/products_junre/2" %></li>
-	<li><%= link_to "プリン","/products_junre/3" %></li>
-	<li><%= link_to "キャンディ","/oriducts_junre/4" %></li>
-	</ul>
- </div>
+	  <h3 class="genre-title">ジャンル</h3>
+	  <% @genres.each do |genre| %>
+	  <div><a href="<%=  customers_product_genre_path(genre.id) %>"><%= genre.genre %></a></div>
+	  <% end %>
+
+  </div>
 </div>
-

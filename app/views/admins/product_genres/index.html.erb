@@ -6,10 +6,10 @@
 	<%= form_for @newgenre, url: admins_product_genres_path do |f| %>
 		<%= f.label :ジャンル %>
 		<%= f.text_field :genre %>
-		<%= f.radio_button :is_valid, :true %>
-		<%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
-  		<%= f.radio_button :is_valid, :false %>
-  		<%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
+		<%= f.radio_button :is_valid, :effectiveness %>
+		<%= f.label :is_valid, "有効", {style: "display: inline-block;"} %>
+  		<%= f.radio_button :is_valid, :uneffectiveness %>
+  		<%= f.label :is_valid, "無効", {style: "display: inline-block;"} %>
   		<%= f.submit '追加' %>
   	<% end %>
 </div>
