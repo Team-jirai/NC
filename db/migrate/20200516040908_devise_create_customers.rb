@@ -41,7 +41,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :tell
       t.string :mail_address
       t.string :password
-      t.boolean :status
+      t.boolean :status, default: true
 
       t.timestamps null: false
     end

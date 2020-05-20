@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Customers::SessionsController < Devise::SessionsController
+  before_action :reject_user, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -17,14 +18,26 @@ class Customers::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  def after_sign_out_path_for(resource)
+    root_path(resource)
+  end
 
-  # protected
+   protected
+   def reject_user
+     @user = Customer.find_by(email: params[:customer][:email].downcase)
+     if @user
+       if (@user.valid_password?(params[:customer][:password]) && (@user.active_for_authentication? == false))
+         flash[:error] = "退会済みです。"
+         redirect_to root_path
+       end
+     else
+       flash[:error] = "必須項目を入力してください。"
+     end
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  def after_sign_out_path_for(resource)
-    root_path(resource)
-  end
+
 end
