@@ -1,4 +1,5 @@
 class Customers::OrderListsController < ApplicationController
+     before_action :total_price, only:[:confirm]
 
   def index #注文履歴一覧
     @order_list = OrderList.new
@@ -10,16 +11,38 @@ class Customers::OrderListsController < ApplicationController
   end
 
   def input
-  	@order_list = OrderList.new
+    @user = current_customer
   end
 
+  def create_test# inputの情報をセッションに格納しconfirmに表示することができる
+    if params[:address_method].to_i == 1
+       session[:input] = {"payment": params[:payment_method],"address": current_customer.address}
+    elsif params[:address_method].to_i == 2
+       a = ShippingAddress.find(params[:select].to_i)
+       session[:input] = {"payment": params[:payment_method],"address": a.address}
+    elsif params[:address_method].to_i == 3
+       a = postal_code.find(params[:select].to_i)
+       session[:input] = {"payment": params[:payment_method],"address": a.postal_code}
+       a = address.find(params[:select].to_i)
+       session[:input] = {"payment": params[:payment_method],"address": a.address}
+       a = name.find(params[:select].to_i)
+       session[:input] = {"payment": params[:payment_method],"address": a.name}
+    end
+    #タブを閉じるまでセッション内の情報は保持される。
+    redirect_to customers_order_lists_confirm_path # inputを保存している
+  end# セッションを使うと一時的に保存できる
+
   def confirm
+    @cart_products = current_customer.cart_products
+    @order_lists = current_customer.order_lists
+
   end
 
   def thanks
   end
 
   def create
+
   end
 
   private
