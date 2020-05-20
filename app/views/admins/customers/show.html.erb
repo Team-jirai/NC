@@ -1,5 +1,5 @@
 <div class="midasi">
-	<h2><%= @customer.name_sei %><%= @customer.name_mei %>さんの会員詳細</h2>
+	<h4 class="midasitext"><%= @customer.name_sei %><%= @customer.name_mei %>さんの会員詳細</h4>
 </div>
 
 <div class="product_form">
@@ -9,7 +9,7 @@
 		<div class="product_name">
 			<div class="customer_label"><p>顧客ID</p></div>
 			<%= @customer.id %>
-			<%= @customer.status %>
+			<%= @customer.status_i18n %>
 		</div>
 		<div class="product_description">
 			<div class="customer_label"><p>氏名</p></div>
