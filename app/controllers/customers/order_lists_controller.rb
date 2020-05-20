@@ -7,7 +7,6 @@ class Customers::OrderListsController < ApplicationController
 
   def show #注文履歴詳細
     @order_list = OrderList.find(params[:id])
-    @order_lists = OrderList.where(customer_id: current_customer.id)
   end
 
   def input
