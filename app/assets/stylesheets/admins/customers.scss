@@ -1,3 +1,34 @@
 // Place all the styles related to the admins::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.customer_contents{
+	margin: 50px auto auto auto;
+}
+
+.admin_c_label{
+	display: inline-block;
+	width: 20%;
+	font-weight: bolder;
+	margin-left: 30%;
+}
+
+.c_status{
+	display: inline-block;
+}
+
+.c_button{
+	width: 20%;
+	margin: auto auto auto auto;
+}
+
+.c_admin_button{
+	display: inline-block;
+}
+
+.c_status{
+	border: solid;
+	margin-left: 10px;
+	background-color: blue;
+	color: white;
+}
