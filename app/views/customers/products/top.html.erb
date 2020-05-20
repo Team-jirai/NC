@@ -1,27 +1,35 @@
 <div class="container">
   <div class="row">
 <%= render 'layouts/sidebar' %>
-    <div class="col-xs-9">
+    <div class="col-xs-10">
      <div class="main-body">
-        <div class="main-visual">
+        
+        <!-- <div class="main-visual">
         　<p class="main-text">
         	ようこそ、NaganoCakeへ！<br>
         	このサイトは、ケーキ販売のECサイトになります。<br>
         	会員でない方も商品の閲覧はできますが、<br>
         	購入には会員登録が必要になります。<br>
           </p>
-        </div>
+        </div> -->
 
-        <div id="container1"> <!-- 画像のjQuery -->
+        <div class="container1"> <!-- jQuery版 -->
             <div id="theTarget">
               <div class="cake1"></div>
               <div class="cake2"></div>
               <div class="cake3"></div>
               <div class="cake4"></div>
+              <div class="cake5"></div>
             </div>
+              <p class="main-text1">
+                ようこそ、NaganoCakeへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。<br>
+              </p>
         </div>
 　　　
-   　<h3>オススメ商品</h3>
+   　<h3 class="osusume">オススメ</h3>
           <% @products.each do |product| %>
           <div class="col-md-3">
              <div>
@@ -35,7 +43,7 @@
              </div>
            </div>
          <% end %>
-     <%= link_to "もっと見る>>", "/customers/products/" %>
+     <%= link_to "もっと見る>>>", "/customers/products/", class:"far fa-eye" %>
      </div>
      </div>
   </div>

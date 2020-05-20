@@ -17,6 +17,12 @@
 @import "bootstrap"; 
 
 
+@font-face {
+  font-family: "hoge";
+  src: font-url('NikkyouSans-B6aV.ttf') format('truetype');
+}
+
+
 .NC-title{
 color:#FFF;
 }
@@ -79,9 +85,30 @@ background-image: url(cake3.jpg);
 background-image: url(cake4.jpg);
 }
 
-#container1{
-  height: 300px;
+.cake5 {
+background-image: url(toptop.jpg);
 }
+
+.container1{
+position: relative;
+ height: 300px;
+}
+
+
+.container1 p{
+position: absolute;
+color:#FFF;
+top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+text-align:center;
+font-size:20px;
+}
+
 
 
 /*商品詳細ページの商品画像の横のテキスト*/
@@ -130,3 +157,14 @@ font-size: 30px;
 text-align:center;
 padding-top:230px;
 }
+
+.genre-title{
+font-family: "hoge";
+font-size:50px;
+}
+
+.osusume{
+font-family: "hoge";
+font-size:50px;
+}
+
