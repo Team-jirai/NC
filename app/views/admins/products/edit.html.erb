@@ -3,9 +3,9 @@
 </div>
 
 <div class="product_form">
+<%= form_for @product, url: admins_product_path(@product.id) do |f| %>
 	<div class="admin_picture">
 		<%= attachment_image_tag @product, :picture, size: "200x200" %>
-<%= form_for @product, url: admins_product_path(@product.id) do |f| %>
 		<div class="picture">
 			<%= f.attachment_field :picture %>
 		</div>
@@ -52,9 +52,9 @@
 				<%= f.select :sales_status,options_for_select(Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}) %>
 			</div>
 		</div>
-		<div class="pruduct_button">
+		<div class="admin_button">
   			<%= f.submit '変更を保存' %>
   		</div>
-  		</div>
+  	</div>
 <% end %>
 </div>
