@@ -2,6 +2,8 @@ class Customers::ProductsController < ApplicationController
 
 def top
  @products = Product.page(params[:page]).per(4)
+ @genres = ProductGenre.all
+
 end
 
 def index
@@ -13,6 +15,8 @@ end
 def show
  @product = Product.find(params[:id])
  @product_new = CartProduct.new #formforで使うための空のモデル(空の箱),CartProductのコントローラーに送る。
+ @genres = ProductGenre.all
+
 end
 
 def create
