@@ -6,28 +6,56 @@
            <div class="col-xs-7"><!-- 注文情報 -->
 
            	 <h4>注文情報</h4>
+           	 　　　
+           	      <table class="table table-bordered">
 
+										  <tr>
+										    <th>注文日</th>
+										    <td><%= @order_list.created_at %></td>
+										  </tr>
 
+										  <tr>
+										    <th>配送先</th>
+										    <td><%= @order_list.address %></td>
+										  </tr>
+
+										  <tr>
+										    <th>支払方法</th>
+										    <td><%= @order_list.payment_method %></td>
+										  </tr>
+
+										  <tr>
+										  	<th>ステータス</th>
+										  	<td><%= @order_list.status %></td>
+										  </tr>
+　
+
+				　         </table>
            </div>
+
            <div class="col-xs-5"><!-- 請求情報 -->
 
            	 <h4>請求情報</h4>
 
-	           	 <table>
+	           	 <table class="table table-bordered">
 
-				  <tr>
-				    <th>名前</th><td>さとう</td><td>のざわ</td><td>まなべ</td>
-				  </tr>
+											  <tr>
+											    <th>商品合計</th>
+											    <td><%= @order_list.total_price %></td><!--  total_price -->
+											    <td><%= converting_to_jpy(@order_list.total_price) %></td> <!-- 整数にして円表示する -->
+											  </tr>
 
-				  <tr>
-				    <th>年齢</th><td>19</td><td>24</td><td>20</td>
-				  </tr>
+											  <tr>
+											    <th>配送料</th>
+											    <td><%= @order_list.postage %></td>
+											  </tr>
 
-				  <tr>
-				    <th>血液型</th><td>A型</td><td>O型</td><td>B型</td>
-				  </tr>
+											  <tr>
+											    <th>ご請求額</th>
+											    <td><%= converting_to_jpy(@order_list.sum_price) %></td>
+											  </tr>
 
-				 </table>
+				       </table>
 
            </div>
            <div class="row"><!-- 注文内容 -->
@@ -44,29 +72,28 @@
            	      </tr>
            	   </thead>
 
-           	   <tbody>
-           	   	　　　　 <% @order_list.order_details.each do |order_detail| %>
-                  <tr>
+           	      <tbody>
 
-					<td>
-						<%= order_detail.product.name. %><!-- ※商品名 -->
-					</td>
-					<td>
-						<%= order_detail.product.price %><!-- ※商品の単価(税込) -->
-					</td>
-					<td>
-						<%= order_detail.product.number %><!-- ※商品の個数 -->
-					</td>
-					<td>
-						<%= order_detail.(product.price * product.number) %><!-- ※小計 -->
-					</td>
+           	   	　　  <% @order_list.order_details.each do |order_detail| %>
 
-					    <% end %>
-			      </tr>
-			     </tbody>
+					              <tr>
+													<td>
+														<%= order_detail.product.name %><!-- ※商品名 -->
+													</td>
+													<td>
+														<%= order_detail.price %><!-- ※商品の単価(税込) -->
+													</td>
+													<td>
+														<%= order_detail.number %><!-- ※商品の個数 -->
+													</td>
+													<td>
+														<%= (order_detail.price * 1.1) * order_detail.number %><!-- 小計 -->
+													</td>
+			                </tr>
+
+										<% end %>
+			          </tbody>
 		   　　　</table>
-
-
            </div>
 	</div>
 </div>
