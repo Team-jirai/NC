@@ -2,43 +2,59 @@
 	<h4 class="midasitext"><%= @customer.name_sei %><%= @customer.name_mei %>さんの会員詳細</h4>
 </div>
 
-<div class="product_form">
-		<div class="picture">
-			<%= attachment_image_tag @product, :picture, size: "100x100" %>
+<div class="customer_contents">
+		<div class="customer_content">
+			<div class="admin_c_label"><p>顧客ID</p></div>
+			<div class="explain_text">
+				<%= @customer.id %>
+				<div class="c_status">
+					<%= @customer.status_i18n %>
+				</div>
+			</div>
 		</div>
-		<div class="product_name">
-			<div class="customer_label"><p>顧客ID</p></div>
-			<%= @customer.id %>
-			<%= @customer.status_i18n %>
+		<div class="customer_content">
+			<div class="admin_c_label"><p>氏名</p></div>
+			<div class="explain_text">
+				<%= @customer.name_sei %><%= @customer.name_mei %>
+			</div>
 		</div>
-		<div class="product_description">
-			<div class="customer_label"><p>氏名</p></div>
-			<%= @customer.name_sei %><%= @customer.name_mei %>
+		<div class="customer_content">
+			<div class="admin_c_label"><p>フリガナ</p></div>
+			<div class="explain_text">
+				<%= @customer.yomi_sei %><%= @customer.yomi_mei %>
+			</div>
 		</div>
-		<div class="product_genre">
-			<div class="customer_label"><p>フリガナ</p></div>
-			<%= @customer.yomi_sei %><%= @customer.yomi_mei %>
+		<div class="customer_content">
+			<div class="admin_c_label"><p>郵便番号</p></div>
+			<div class="explain_text">
+				<%= @customer.postal_code %>
+			</div>
 		</div>
-		<div class="product_price">
-			<div class="customer_label"><p>郵便番号</p></div>
-			<%= @customer.postal_code %>
+		<div class="customer_content">
+			<div class="admin_c_label"><p>住所</p></div>
+			<div class="explain_text">
+				<%= @customer.address %>
+			</div>
 		</div>
-		<div class="product_status">
-			<div class="customer_label"><p>住所</p></div>
-			<%= @customer.address %>
+		<div class="customer_content">
+			<div class="admin_c_label"><p>電話番号</p></div>
+			<div class="explain_text">
+				<%= @customer.tell %>
+			</div>
 		</div>
-		<div class="product_status">
-			<div class="customer_label"><p>電話番号</p></div>
-			<%= @customer.tell %>
+		<div class="customer_content">
+			<div class="admin_c_label"><p>メールアドレス</p></div>
+			<div class="explain_text">
+				<%= @customer.email %>
+			</div>
 		</div>
-		<div class="product_status">
-			<div class="customer_label"><p>メールアドレス</p></div>
-			<%= @customer.email %>
-		</div>
-		<div class="customer_button">
-			<%= link_to "編集する", edit_admins_customer_path(@customer.id) %>
-		</div>
-		<div class="customer_button">
-			<%= link_to "注文一覧", admins_order_lists_path %>
+
+		<div class="c_button">
+			<div class="c_admin_button">
+				<%= link_to "編集する", edit_admins_customer_path(@customer.id) %>
+			</div>
+			<div class="c_admin_button">
+				<%= link_to "注文一覧", admins_order_lists_path %>
+			</div>
 		</div>
 </div>

@@ -1,3 +1,24 @@
 // Place all the styles related to the admins::order_lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.orderstatus{
+	display: inline-block;
+}
+
+.o_s_selec{
+	display: inline-block;
+}
+
+.o_button{
+	display: inline-block;
+}
+
+.o_table{
+	margin-top: 20px;
+}
+
+.admin_total{
+	margin-left: 60%;
+}
+
