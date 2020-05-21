@@ -22,6 +22,15 @@
   src: font-url('NikkyouSans-B6aV.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: "cute";
+  src: font-url('WaonJoyo-R.otf') format('truetype');
+}
+
+
+.product_index_title{
+font-family: "cute";
+}
 
 .NC-title{
 color:#FFF;
@@ -96,6 +105,7 @@ position: relative;
 }
 
 
+/*商品topのjquery画像の中のテキスト*/
 .container1 p{
 position: absolute;
 color:#FFF;
@@ -120,13 +130,14 @@ float:left;
 /*会員詳細ページのカートボタン*/
 .cart{
 float:right;
-padding-top:250px;
+padding-top:200px;
 padding-right:160px;
 }
 
 /*会員詳細ページの商品タイトル*/
 .product-title{
 font-size:30px;
+font-family: "cute";
 }
 
 /*会員詳細ページの商品説明*/
@@ -169,3 +180,62 @@ font-family: "hoge";
 font-size:50px;
 }
 
+/*商品indexの商品名*/
+.product_price1{
+padding-top:12px;
+font-family: "cute";
+}
+
+/*サイドバーのジャンル名*/
+.genre-name{
+font-family: "cute";
+}
+
+.product_price2{
+padding-top:10px;
+}
+
+
+.navbar-right{
+font-size:18px;
+font-family: "cute";
+}
+
+.mypage{
+font-family: "hoge";
+font-size:45px;
+}
+
+/*商品topのもっとみる*/
+.more{
+font-size:23px;
+font-family: "cute";
+}
+
+/*商品topのおすすめの横の星*/
+.fa-star{
+font-size:33px;
+color:#FEC534;
+}
+
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.fa-home{
+color:#4B882C;
+}

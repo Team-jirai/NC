@@ -1,5 +1,7 @@
-<h1>マイページ</h1>
-<h2>登録情報</h2><a><%= link_to '編集する', edit_customers_path %></a>
+<h1 class="mypage">マイページ <i class="fas fa-user-cog"></i></h1>
+<h2>登録情報</h2>
+<a><%= link_to '編集する', edit_customers_path, class:"btn btn-primary" %></a>
+
 <table>
 	<tr>
 		<th>氏名</th>
