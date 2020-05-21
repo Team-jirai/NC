@@ -1,5 +1,5 @@
 <h1>マイページ</h1>
-<h2>登録情報</h2><a><%= link_to '編集する', edit_customers_path %></a>
+<h2>登録情報</h2><a><%= link_to '編集する', customers_fix_path %></a><a><%= link_to 'パスワード変更', edit_customer_registration_path %></a>
 <table>
 	<tr>
 		<th>氏名</th>
@@ -26,3 +26,5 @@
 		<td><%= @user.email %></td>
 	</tr>
 </table>
+<h2>配送先</h2><a><%= link_to '一覧を表示', customers_shipping_addresses_path %></a>
+<h2>登録情報</h2><a><%= link_to '一覧を表示', customers_order_lists_path %></a>
