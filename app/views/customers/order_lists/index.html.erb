@@ -21,7 +21,7 @@
                   <tr>
 
 					<td>
-						<%= order_list.created_at %><!-- ※注文日 -->
+						<%= order_list.created_at.strftime('%Y/%m/%d %H:%M') %><!-- ※注文日 年/月/日で表示 -->
 					</td>
 					<td>
 						<%= order_list.address %><!-- ※配送先 -->
@@ -38,7 +38,7 @@
 						<%= order_list.status %><!-- ※ステータス -->
 					</td>
 					<td>
-						<%= link_to "表示する", customers_order_list_path(@order_list.id), class:"btn btn-primary" %><!-- ※注文詳細 -->
+						<%= link_to "表示する", customers_order_list_path(order_list.id), class:"btn btn-primary" %><!-- ※注文詳細 -->
 					</td>
 
 					    <% end %>
