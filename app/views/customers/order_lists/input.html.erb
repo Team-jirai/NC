@@ -1,6 +1,6 @@
 <div>
   <h3>支払方法</h3>
-  <%= form_with model:@order_list, url: customers_order_lists_confirm_path, method: :post do |f| %>
+  <%= form_with model:@order_list, local: true, url: customers_order_lists_confirm_path, method: :post do |f| %>
   <!-- formforはモデルと関連づけなければいけない。form_withはモデルと関連づけなくていい -->
 	<div class="field">
       <label>
@@ -34,7 +34,7 @@
       <%= f.text_field :new_address, placeholder: "住所" %>
       <%= f.text_field :new_name, placeholder: "宛名" %>
 
-      <%= f.submit '確認画面へ進む' %>
+      <%= f.submit '確認画面へ進む', class:"btn btn-primary" %>
   </div>
   <% end %>
 </div>

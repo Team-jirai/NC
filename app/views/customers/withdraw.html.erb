@@ -1,4 +1,4 @@
 <h1>退会 <i class="fas fa-door-open"></i></h1>
-<a><%= link_to '退会しない', edit_customers_path, class:"btn btn-primary" %></a>
+<a><%= link_to '退会しない', customers_fix_path, class:"btn btn-primary" %></a>
 
    <a><%= link_to "退会", customers_withdraw_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %></a>

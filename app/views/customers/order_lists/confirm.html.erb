@@ -53,7 +53,8 @@
 	<%= session[:input]["name"] %>
 </div>
 <div>
-	<%= form_with model:@order_list, url: customers_order_lists_path, method: :post do |f| %>
+	<%= form_with model:@order_list, local: true, url: customers_order_lists_path, method: :post do |f| %>
+	<!-- form_withは探してくるファイルを.Jsで探すのがデフォルト。formforはhtml -->
 
   			<%= f.hidden_field :shipping_name, :value => session[:input]["name"] %>
   			<%= f.hidden_field :postal_code, :value => session[:input]["postal_code"] %>
@@ -62,7 +63,7 @@
   			<%= f.hidden_field :postage, :value => 800 %>
   			<%= f.hidden_field :payment_method, :value => session[:input]["payment"] %>
 <div>
-		<%= f.submit '購入を確定する' %>
+		<%= f.submit '購入を確定する', class:"btn btn-primary" %>
 </div>
   	<% end %>
 </div>

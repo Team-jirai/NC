@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row">
-  <%= link_to "カートを空にする", customers_cart_products_empty_cart_path, method: :delete %>
+  <%= link_to "カートを空にする", customers_cart_products_empty_cart_path, method: :delete, class:"btn btn-info" %>
 </div>
 
 
@@ -45,7 +45,7 @@
   </table>
 </div>
 <div>
-  <%= link_to "買い物を続ける", customers_products_path %><!-- 商品一覧画面に遷移 -->
+  <%= link_to "買い物を続ける", customers_products_path, class:"btn btn-success" %><!-- 商品一覧画面に遷移 -->
 </div>
 <div>
   <table>

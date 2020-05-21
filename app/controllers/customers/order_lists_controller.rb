@@ -1,5 +1,6 @@
 class Customers::OrderListsController < ApplicationController
      before_action :total_price, only:[:confirm]
+     before_action :authenticate_customer!# ログインしているユーザーのみ入れる
 
   def index #注文履歴一覧
     # @order_list = OrderList.new
@@ -31,7 +32,7 @@ class Customers::OrderListsController < ApplicationController
        @order_list.postal_code = params[:order_list][:new_postal_code]
        @order_list.address = params[:order_list][:new_address]
        @order_list.shipping_name = params[:order_list][:new_name]
-       p @order_list
+       # p @order_list
        session[:input] = {"payment": params[:payment_method], "postal_code": @order_list.postal_code , "address": @order_list.address, "name": @order_list.shipping_name }
         #binding.pry
     end
@@ -58,9 +59,9 @@ class Customers::OrderListsController < ApplicationController
     # @order_listには１つのレコードが保存
     redirect_to customers_order_lists_thanks_path
     else
-      @order_list.errors.full_messages.each do |msg|
-        p msg #p = プリント
-      end
+      # @order_list.errors.full_messages.each do |msg|
+      #   p msg #p = プリント
+      # end
       redirect_to request.referer # 遷移前のURLを取得
     end
   end
