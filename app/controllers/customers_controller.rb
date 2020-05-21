@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
 		@user = current_customer
 	end
 
-	def edit
+	def fix
 		@user = current_customer
 	end
 
@@ -21,12 +21,12 @@ class CustomersController < ApplicationController
         redirect_to root_path
     end
 
-	def update
+	def fix_update
 		@user = current_customer
 		if @user.update(customer_params)
 		  redirect_to customers_mypage_path
 	    else
-	      render "edit"
+	      render "fix"
 	    end
 	end
 	def customer_params
