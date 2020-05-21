@@ -4,6 +4,17 @@
 	   <h3>配送先登録/一覧 <i class="fas fa-home"></i></h3>
      </div>
 
+          <% if @shipping_address.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <h2><%= @shipping_address.errors.count %> errors prohibited this book from being saved:</h2>
+		      <% @shipping_address.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		    </ul>
+               <% end %>
+           </div>
+           <% end %>
+
 		<div class="shipping-create">
            <%= form_for @shipping_address, url:customers_shipping_addresses_path do |f| %>
 	           <%= f.label :"郵便番号(ハイフンなし)" %>
