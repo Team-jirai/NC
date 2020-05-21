@@ -49,7 +49,7 @@
 				<%= f.label :販売ステータス %>
 			</div>
 			<div class="explain_text">
-				<%= f.select :sales_status,options_for_select(Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}) %>
+				<%= f.select :sales_status,options_for_select(Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]},:selected => @product.sales_status) %>
 			</div>
 		</div>
 		<div class="admin_button">

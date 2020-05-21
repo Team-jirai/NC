@@ -29,7 +29,6 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
 
-ja:
   views:
     pagination:
       first: <i class="fas fa-cookie-bite"></i>

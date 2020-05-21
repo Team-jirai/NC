@@ -35,7 +35,7 @@
 						<p><%= order_list.sum_price %>円</p><!-- ※支払い金額 -->
 					</td>
 					<td>
-						<%= order_list.status %><!-- ※ステータス -->
+						<%= order_list.status_i18n %><!-- ※ステータス -->
 					</td>
 					<td>
 						<%= link_to "表示する", customers_order_list_path(order_list.id), class:"btn btn-primary" %><!-- ※注文詳細 -->
