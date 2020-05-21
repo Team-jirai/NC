@@ -46,8 +46,8 @@
 	</thead>
 
 	<tbody>
-		<% @order_list.order_details.each do |order_detail| %>
 		<tr>
+		<% @order_list.order_details.each do |order_detail| %>
 			<td><%= order_detail.product.name %></td>
 			<td><%= converting_to_jpy(order_detail.price) %></td>
 			<td><%= order_detail.number %></td>
@@ -57,8 +57,8 @@
 			<td><%= f.select :making_status,options_for_select(OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}) %></td>
 			<td><%= f.submit '変更' %></td>
 			<% end %>
-		</tr>
 		<% end %>
+		</tr>
 	</tbody>
 </table>
 </div>
