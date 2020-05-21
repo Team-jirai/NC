@@ -9,7 +9,7 @@
 OrderList.create!(
 	postage: 800,
 	customer_id: 1,
-	total_price: 2285,
+	total_price: 1485,
 	payment_method: 0,
 	shipping_name: "佐藤一郎",
 	postal_code: "8888888",
