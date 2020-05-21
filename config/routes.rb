@@ -10,7 +10,11 @@ Rails.application.routes.draw do
    get '/customers/sign_up' => 'customers/registrations#new',as:'new_customer_registration'
    post '/customers' => 'customers/registrations#create',as:'customer_registration'
  end
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'customers/products#top'
 
