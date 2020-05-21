@@ -2,8 +2,10 @@ class Customers::OrderListsController < ApplicationController
      before_action :total_price, only:[:confirm]
 
   def index #注文履歴一覧
-    @order_list = OrderList.new
-    @order_lists = OrderList.where(customer_id: current_customer.id) #ログインしているユーザーの注文履歴のみ表示
+    # @order_list = OrderList.new
+    # @order_lists = OrderList.where(customer_id: current_customer.id) #ログインしているユーザーの注文履歴のみ表示
+    @order_lists = current_customer.order_lists #has_many :order_listsでcustomerとアソシエーションされているため呼び出せる。
+
   end
 
   def show #注文履歴詳細
@@ -17,7 +19,7 @@ class Customers::OrderListsController < ApplicationController
   def create_test# inputの情報をセッションに格納しconfirmに表示することができる
     #binding.pry
     if params[:order_list][:address_method].to_i == 1
-       session[:input] = {"payment": params[:order_list][:payment_method], "postal_code": current_customer.postal_code, "address": current_customer.address, "name_sei": current_customer.name_sei, "name_mei": current_customer.name_mei}
+       session[:input] = {"payment": params[:order_list][:payment_method], "postal_code": current_customer.postal_code, "address": current_customer.address, "name": current_customer.name_sei + current_customer.name_mei}
        #binding.pry
     elsif params[:order_list][:address_method].to_i == 2
        a = ShippingAddress.find(params[:select].to_i) #ShippingAddressのidをfindで見つけてaに入れている。
@@ -39,14 +41,31 @@ class Customers::OrderListsController < ApplicationController
 
   def confirm
     @cart_products = current_customer.cart_products
-
-  end
-
-  def thanks
+    @order_list = OrderList.new
   end
 
   def create
+    @order_list = OrderList.new(order_list_params)
+    # OrderList.new(order_list_params)=受け取る箱（saveがされていない）
+      @order_list.customer_id = current_customer.id #会員id
+    current_customer.cart_products.each do |cart_product| # 清算後のマイバックに入れている商品をorder_detailからcart_productを通して持ってくる
+      order_detail = @order_list.order_details.new # order_listの主idはnewに入っている
+      order_detail.product_id = cart_product.product_id #商品
+      order_detail.price = cart_product.product.price #商品の価格
+      order_detail.number = cart_product.number # 商品の個数
+  end
+    if @order_list.save
+    # @order_listには１つのレコードが保存
+    redirect_to customers_order_lists_thanks_path
+    else
+      @order_list.errors.full_messages.each do |msg|
+        p msg #p = プリント
+      end
+      redirect_to request.referer # 遷移前のURLを取得
+    end
+  end
 
+  def thanks
   end
 
   private
