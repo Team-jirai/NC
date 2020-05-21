@@ -29,3 +29,11 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
 
+ja:
+  views:
+    pagination:
+      first: <i class="fas fa-cookie-bite"></i>
+      last: <i class="fas fa-cookie-bite"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

@@ -11,5 +11,4 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.status == true)
   end
-  # validates :status, inclusion: {in: ["effective", "uneffective"]}
 end

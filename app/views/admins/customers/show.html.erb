@@ -8,7 +8,11 @@
 			<div class="explain_text">
 				<%= @customer.id %>
 				<div class="c_status">
-					<%= @customer.status %>
+					<% if @customer.status == true %>
+						<p>有効</p>
+					<% else %>
+						<p>退会済み</p>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -27,7 +31,7 @@
 		<div class="customer_content">
 			<div class="admin_c_label"><p>郵便番号</p></div>
 			<div class="explain_text">
-				<%= @customer.postal_code %>
+				<%= @customer.postal_code.insert(3, '-') %>
 			</div>
 		</div>
 		<div class="customer_content">

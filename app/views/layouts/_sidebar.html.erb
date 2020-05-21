@@ -3,7 +3,7 @@
 
 	  <h3 class="genre-title">ジャンル</h3>
 	  <% @genres.each do |genre| %>
-	  <div><a href="<%=  customers_product_genre_path(genre.id) %>"><%= genre.genre %></a></div>
+	  <div class="genre-name"><a href="<%=  customers_product_genre_path(genre.id) %>"><%= genre.genre %></a></div>
 	  <% end %>
 
   </div>

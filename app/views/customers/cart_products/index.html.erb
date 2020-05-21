@@ -25,7 +25,7 @@
           <%= attachment_image_tag cart_product.product, :picture, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %><%= cart_product.product.name %>
         </td>
         <td>
-          <%= cart_product.product.price %>円
+          <%= (cart_product.product.price * 1.1).to_i %>円
         </td>
         <td>
           <%= form_for cart_product, url: customers_cart_product_path(cart_product.id),method: :PATCH do |f| %>
@@ -34,7 +34,7 @@
           <% end %>
         </td>
         <td>
-          <%= cart_product.product.price * cart_product.number %>
+          <%= (cart_product.product.price * 1.1).to_i * cart_product.number %>
         </td>
         <td>
           <%= link_to "削除する", customers_cart_product_path(cart_product.id),method: :delete %> <!-- 押された後ルートに確認してコントローラーに -->
