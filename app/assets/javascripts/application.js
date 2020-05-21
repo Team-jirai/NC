@@ -41,3 +41,10 @@ $(document).ready(function () {
       hidePrevious : false
   });
 });
+
+$(document).ready(function () {
+ $('#js-target').t({
+      speed : 50,
+      speed_vary :false
+  });
+});
