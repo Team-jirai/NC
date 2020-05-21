@@ -24,7 +24,7 @@
 			<%= @order_list.status_i18n %>
 			<div class="orderstatus">
 				<%= form_for @order_list, url: admins_order_list_path(@order_list.id) do |f| %>
-						<%= f.select :status,options_for_select(OrderList.statuses.keys.map {|k| [I18n.t("enums.order_list.status.#{k}"), k]}) %>
+						<%= f.select :status,options_for_select(OrderList.statuses.keys.map {|k| [I18n.t("enums.order_list.status.#{k}"), k]},:selected => @order_list.status) %>
 					<div class="o_button">
   						<%= f.submit '変更' %>
   					</div>

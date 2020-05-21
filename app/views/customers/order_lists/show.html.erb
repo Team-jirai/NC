@@ -23,8 +23,10 @@
 										  </tr>
 
 										  <tr>
+
 										  	<th class="active">ステータス</th>
-										  	<td><%= @order_list.status %></td>
+										  	<td><%= @order_list.status_i18n %></td>
+
 										  </tr>
 　
 
@@ -88,7 +90,7 @@
 														<%= order_detail.number %><!-- ※商品の個数 -->
 													</td>
 													<td>
-														<%= ((order_detail.price * 1.1) * order_detail.number).to_i %>円<!-- 小計 -->
+														<%= ((order_detail.price) * order_detail.number).to_i %>円<!-- 小計 -->
 													</td>
 			                </tr>
 

@@ -80,3 +80,9 @@ gem 'enum_help' #enumの日本語化
 
 gem 'jquery-rails' #jquery-rails
 
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+end
+
