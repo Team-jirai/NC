@@ -1,0 +1,46 @@
+<div class="midasi">
+	<h3><%= @customer.name_sei %><%= @customer.name_mei %>さんの会員情報編集</h3>
+</div>
+
+<div class="customer_form">
+<div class="product_name">
+	<div class="admin_label"><p>顧客ID</p></div>
+	<%= @customer.id %>
+</div>
+<%= form_for @customer, url: admins_customer_path(@customer.id) do |f| %>
+		<div class="customer_name">
+			<%= f.label :氏名 %>
+			<%= f.text_field :name_sei %><%= f.text_field :name_mei %>
+		</div>
+		<div class="customer_name">
+			<%= f.label :フリガナ %>
+			<%= f.text_field :yomi_sei %><%= f.text_field :yomi_mei %>
+		</div>
+		<div class="customer_postcode">
+			<%= f.label :郵便番号 %>
+			<%= f.text_field :postal_code %>
+		</div>
+		<div class="customer_address">
+			<%= f.label :住所 %>
+			<%= f.text_field :address %>
+		</div>
+		<div class="customer_tell">
+			<%= f.label :電話番号 %>
+			<%= f.text_field :tell %>
+		</div>
+		<div class="customer_email">
+			<%= f.label :メールアドレス %>
+			<%= f.text_field :email %>
+		</div>
+		<div class="customer_status">
+			<%= f.label :顧客ステータス %>
+			<%= f.radio_button :status, :effective %>
+			<%= f.label :status, "有効", {style: "display: inline-block;"} %>
+  			<%= f.radio_button :status, :uneffective %>
+  			<%= f.label :status, "退会済み", {style: "display: inline-block;"} %>
+		</div>
+		<div class="pruduct_button">
+  			<%= f.submit '変更を保存する' %>
+  		</div>
+<% end %>
+</div>
