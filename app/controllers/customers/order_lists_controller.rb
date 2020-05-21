@@ -48,8 +48,10 @@ class Customers::OrderListsController < ApplicationController
   def create
     @order_list = OrderList.new(order_list_params)
     # OrderList.new(order_list_params)=受け取る箱（saveがされていない）
+    @cart_products = current_customer.cart_products
+
       @order_list.customer_id = current_customer.id #会員id
-    current_customer.cart_products.each do |cart_product| # 清算後のマイバックに入れている商品をorder_detailからcart_productを通して持ってくる
+    @cart_products.each do |cart_product| # 清算後のマイバックに入れている商品をorder_detailからcart_productを通して持ってくる
       order_detail = @order_list.order_details.new # order_listの主idはnewに入っている
       order_detail.product_id = cart_product.product_id #商品
       order_detail.price = cart_product.product.price #商品の価格
@@ -57,6 +59,7 @@ class Customers::OrderListsController < ApplicationController
   end
     if @order_list.save
     # @order_listには１つのレコードが保存
+    @cart_products.destroy_all #ログインユーザーのカートを定義、全て削除
     redirect_to customers_order_lists_thanks_path
     else
       # @order_list.errors.full_messages.each do |msg|

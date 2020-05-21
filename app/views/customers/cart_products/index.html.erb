@@ -1,7 +1,8 @@
 
 <div class="container">
   <div class="row">
-  <%= link_to "カートを空にする", customers_cart_products_empty_cart_path, method: :delete %>
+  <%= button_to "カートを空にする", customers_destroy_all_path, method: :delete %>
+
 </div>
 
 
@@ -10,6 +11,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th></th>
         <th>商品名</th>
         <th>単価（税込）</th>
         <th>数量</th>
@@ -22,7 +24,10 @@
       <tr>
         <td>
 
-          <%= attachment_image_tag cart_product.product, :picture, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %><%= cart_product.product.name %>
+          <%= attachment_image_tag cart_product.product, :picture, format: 'jpeg', fallback: "no_image.jpg", size: "150x110" %>
+        </td>
+        <td>
+          <%= cart_product.product.name %>
         </td>
         <td>
           <%= (cart_product.product.price * 1.1).to_i %>円
@@ -34,7 +39,7 @@
           <% end %>
         </td>
         <td>
-          <%= (cart_product.product.price * 1.1).to_i * cart_product.number %>
+          <%= (cart_product.product.price * 1.1).to_i * cart_product.number %>円
         </td>
         <td>
           <%= link_to "削除する", customers_cart_product_path(cart_product.id),method: :delete, class:"btn btn-danger" %> <!-- 押された後ルートに確認してコントローラーに -->
@@ -50,7 +55,7 @@
 <div>
   <table>
       <tr>
-        <th><p class="total_pprice1">合計金額</p></th>
+        <th><p class="total_pprice1">合計金額 ： </p></th>
         <td><p class="total_pprice2"><%= @total_price %>円（税込)</p></td><!-- 合計金額記述 -->
       </tr>
   </table>

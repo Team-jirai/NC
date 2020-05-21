@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :product_genres, only: [:show]
     resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
-    delete 'cart_products/empty_cart' => 'cart_products#empty_cart'
+    delete 'cart_products' => 'cart_products#destroy_all', as:'destroy_all'
 
     get 'order_lists/input' => 'order_lists#input'# 順番変更とcustomers/削除
     get 'order_lists/confirm' => 'order_lists#confirm'# 追加
