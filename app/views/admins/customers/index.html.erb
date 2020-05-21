@@ -18,7 +18,12 @@
 			<td><%= customer.id %></td>
 			<td><a href="<%= admins_customer_path(customer.id) %>"><%= customer.name_sei%><%= customer.name_mei%></a></td>
 			<td><%= customer.email %></td>
-			<td><%= customer.status %></td>
+			<td><% if customer.status == true %>
+					<p>有効</p>
+				<% else %>
+					<p>退会済み</p>
+				<% end %>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>

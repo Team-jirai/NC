@@ -1,19 +1,41 @@
 <div>
   <h3>支払方法</h3>
-	<%= form_for @order_list, url: customers_order_lists_confirm_path, method: :POST do |f| %>
+  <%= form_with model:@order_list, url: customers_order_lists_confirm_path, method: :post do |f| %>
+  <!-- formforはモデルと関連づけなければいけない。form_withはモデルと関連づけなくていい -->
 	<div class="field">
       <label>
     	<%= f.radio_button :payment_method, "クレジットカード" %>クレジットカード
       </label>
       <label>
-        <%= f.radio_button :payment_method, "銀行振込" %>銀行振込
+      <%= f.radio_button :payment_method, "銀行振込" %>銀行振込
       </label>
       <!-- f.radio_button カラム名, 実際にテーブルに登録する値%>選択肢に表示する文字 -->
   	</div>
 
   <h3>お届け先</h3>
- 	 <div class="field">
-  	 </div>
-  	 <% end %>
+ 	<div class="field">
+      <label>
+        <!-- if文を使用、判別はaddress_method -->
+      <%= f.radio_button :address_method, 1 %>ご自身の住所
+      </label>
+      <%= current_customer.postal_code %>
+      <%= current_customer.address %>
+      <%= current_customer.name_sei %>
+      <%= current_customer.name_mei %>
+      <label>
+      <%= f.radio_button :address_method, 2 %>登録済み住所から選択
+      </label>
+      <%= select_tag "select", options_from_collection_for_select(current_customer.shipping_addresses, :id, :full_address) %>
+      <!-- full_address：shipping_addresseモデルに記述 -->
+      <label>
+      <%= f.radio_button :address_method, 3 %>新しいお届け先
+      </label>
+      <%= f.text_field :new_postal_code, placeholder: "郵便番号" %>
+      <%= f.text_field :new_address, placeholder: "住所" %>
+      <%= f.text_field :new_name, placeholder: "宛名" %>
+
+      <%= f.submit '確認画面へ進む' %>
+  </div>
+  <% end %>
 </div>
 <!-- form_with -->

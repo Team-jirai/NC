@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_021913) do
+ActiveRecord::Schema.define(version: 2020_05_20_122331) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 2020_05_18_021913) do
     t.string "shipping_name"
     t.string "postal_code"
     t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_genres", force: :cascade do |t|
+    t.string "genre"
+    t.boolean "is_valid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

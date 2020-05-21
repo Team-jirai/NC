@@ -1,0 +1,34 @@
+<div class="midasi">
+	<h3>商品編集</h3>
+</div>
+
+<div class="product_form">
+<%= form_for @product, url: admins_product_path(@product.id) do |f| %>
+		<div class="picture">
+			<%= f.attachment_field :picture %>
+		</div>
+		<div class="product_name">
+			<%= f.label :商品名 %>
+			<%= f.text_field :name %>
+		</div>
+		<div class="product_description">
+			<%= f.label :商品説明 %>
+			<%= f.text_area :description %>
+		</div>
+		<div class="product_genre">
+			<%= f.label :ジャンル %>
+			<%= f.collection_select :product_genre_id, ProductGenre.all, :id, :genre, :prompt => "ジャンル" %>
+		</div>
+		<div class="product_price">
+			<%= f.label :税抜価格 %>
+			<%= f.text_field :price %>円
+		</div>
+		<div class="product_status">
+			<%= f.label :販売ステータス %>
+			<%= f.select :sales_status,options_for_select(Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}) %>
+		</div>
+		<div class="pruduct_button">
+  			<%= f.submit '変更を保存' %>
+  		</div>
+<% end %>
+</div>
