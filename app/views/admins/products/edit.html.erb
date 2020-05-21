@@ -33,7 +33,7 @@
 				<%= f.label :ジャンル %>
 			</div>
 			<div class="explain_text">
-				<%= f.collection_select :product_genre_id, ProductGenre.all, :id, :genre, :prompt => "ジャンル" %>
+				<%= f.collection_select :product_genre_id, ProductGenre.where(is_valid: true), :id, :genre, :prompt => "ジャンル" %>
 			</div>
 		</div>
 		<div class="product_price">
