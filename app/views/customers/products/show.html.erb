@@ -15,6 +15,7 @@
         <p class="product-price">¥<%= @product.price_with_tax(@product.price) %>(税込)</p>
         </div>
 
+    <% if customer_signed_in? %><!-- ログインしているユーザーのみカートボタン表示 -->
         <div class="cart">
         <%= form_for @product_new, url: customers_cart_products_path, method: :POST do |f| %>
         <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %>
@@ -23,9 +24,8 @@
         <%= f.submit "カートに入れる", class:"btn btn-primary" %><br>
         <% end %>
         <!-- method: :POSTはPOSTに飛ぶための記述 -->
-
         </div>
-
+    <% end %>
      </div>
     </div>
   </div>
