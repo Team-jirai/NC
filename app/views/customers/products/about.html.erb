@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
 
-	<h1 class="admin_about">Admin's Profile<i class="fas fa-flushed"></i></h1>
+	<h1 class="admin_about">Admin's Profile<i class="fas fa-grin-tongue"></i></h1>
  
    <div class="profile">
 	   <p class="profile-img">
@@ -20,29 +20,72 @@
     </div>
  </div>
 
-<div class="row admin_about">
+<div class="row">
 
-        <h1>Shop's MAP</h1>
-        <div id='map'></div>
+        <h1 class="admin_about">Shop's MAP<i class="fas fa-map-marker-alt"></i></h1>
+        <div class="nagano">
+        <p>〒150-0041 東京都渋谷区神南１丁目１９−１１ ナガノケーキ <i class="fas fa-cookie-bite"></i></p>
+        </div>
 
-        <style>
-        	#map{
-        		height:400px;
-        	}
-        </style>
+　　 <script>
+    // 現在地取得処理
+    function initMap() {
+      // Geolocation APIに対応している
+      if (navigator.geolocation) {
+        // 現在地を取得
+        navigator.geolocation.getCurrentPosition(
+          // 取得成功した場合
+          function(position) {
+            // 緯度・経度を変数に格納
+            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            // マップオプションを変数に格納
+            var mapOptions = {
+              zoom : 19,          // 拡大倍率
+              center : new google.maps.LatLng(35.6627887,139.699463)  // 緯度・経度
+            };
+            // マップオブジェクト作成
+            var map = new google.maps.Map(
+              document.getElementById("map"), // マップを表示する要素
+              mapOptions         // マップオプション
+            );
+            //　マップにマーカーを表示する
+            var marker = new google.maps.Marker({
+              map : map,             // 対象の地図オブジェクト
+              position : new google.maps.LatLng(35.6627887,139.699463)   // 緯度・経度
+            });
+          },
+          // 取得失敗した場合
+          function(error) {
+            // エラーメッセージを表示
+            switch(error.code) {
+              case 1: // PERMISSION_DENIED
+                alert("位置情報の利用が許可されていません");
+                break;
+              case 2: // POSITION_UNAVAILABLE
+                alert("現在位置が取得できませんでした");
+                break;
+              case 3: // TIMEOUT
+                alert("タイムアウトになりました");
+                break;
+              default:
+                alert("その他のエラー(エラーコード:"+error.code+")");
+                break;
+            }
+          }
+        );
+      // Geolocation APIに対応していない
+      } else {
+        alert("この端末では位置情報が取得できません");
+      }
+    }
+  </script>
 
-        <script>
-        	function initMap() {
-				  var opts = {
-				    zoom: 17,
-				    center: new google.maps.LatLng(35.6628654,139.6983706)
-				  };
+<body>
 
-				  var map = new google.maps.Map(document.getElementById("map"), opts);
-				}
+  <div id="map" style="width:400px; height:300px"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYAWZndtqBRNq1g3SnRHU45LWUCyMKFqM&callback=initMap"></script>
+</body>
 
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYAWZndtqBRNq1g3SnRHU45LWUCyMKFqM&callback=initMap" async defer></script>
 
 
 </div>
