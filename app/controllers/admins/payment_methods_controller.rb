@@ -15,6 +15,7 @@ class Admins::PaymentMethodsController < ApplicationController
 			redirect_to admins_payment_methods_path
 		else
 			@payment_methods = PaymentMethod.all
+			@postages = Postage.all
 			render :index
 		end
 	end
