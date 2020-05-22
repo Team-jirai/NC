@@ -1,0 +1,30 @@
+<div class="midasi">
+	<h3 class="midasitext">支払い方法・送料</h3>
+</div>
+
+<div class="genre_form">
+	<%= form_for @postage_new, url: admins_postages_path do |f| %>
+		<%= f.label :送料 %>
+		<%= f.text_field :cost %>
+  		<%= f.submit '設定' %>
+  	<% end %>
+</div>
+<div class="genrelists">
+	<table class="table table-hover table-inverse">
+	<thead>
+		<tr>
+			<th>送料</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @postages.each do |postage| %>
+		<tr>
+			<td><%= postage.cost %></td>
+			<td><div class="btn btn-primary active"><%= link_to "編集", edit_admins_postage_path(postage.id) %></div></td>
+		</tr>
+		<% end %>
+	</tbody>
+	</table>
+</div>

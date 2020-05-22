@@ -26,7 +26,7 @@
 	<table>
 			<tr>
               　<th>送料</th>
-              	<td><%= 800 %>円</td>
+              	<td><%= @postage.cost %>円</td>
             </tr>
             <tr>
               　<th>商品合計</th>
@@ -35,7 +35,7 @@
 
             <tr>
               　<th>請求金額</th>
-              	<td><%= @total_price + 800%>円</td>
+              	<td><%= @total_price + @postage.cost%>円</td>
             </tr>
       </table>
     </div>
@@ -60,7 +60,7 @@
   			<%= f.hidden_field :postal_code, :value => session[:input]["postal_code"] %>
   			<%= f.hidden_field :address, :value => session[:input]["address"] %>
   			<%= f.hidden_field :total_price, :value => @total_price %>
-  			<%= f.hidden_field :postage, :value => 800 %>
+  			<%= f.hidden_field :shipping_fee, :value => @postage.cost %>
   			<%= f.hidden_field :payment_method, :value => session[:input]["payment"] %>
 <div>
 		<%= f.submit '購入を確定する', class:"btn btn-primary" %>

@@ -43,6 +43,7 @@ class Customers::OrderListsController < ApplicationController
   def confirm
     @cart_products = current_customer.cart_products
     @order_list = OrderList.new
+    @postage = Postage.find(1)
   end
 
   def create
@@ -74,6 +75,6 @@ class Customers::OrderListsController < ApplicationController
 
   private
   def order_list_params
-    params.require(:order_list).permit(:postage, :customer_id, :total_price, :status, :payment_method, :shipping_name, :postal_code, :address)
+    params.require(:order_list).permit(:shipping_fee, :customer_id, :total_price, :status, :payment_method, :shipping_name, :postal_code, :address)
   end
 end
