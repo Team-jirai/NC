@@ -54,7 +54,7 @@
 			<td><%= converting_to_jpy(order_detail.sum_price) %></td>
 			<td><%= order_detail.making_status_i18n %></td>
 			<%= form_for order_detail, url: admins_order_detail_path(order_detail.id) do |f| %>
-			<td><%= f.select :making_status,options_for_select(OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}) %></td>
+			<td><%= f.select :making_status,options_for_select(OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]},:selected => order_detail.making_status) %></td>
 			<td><%= f.submit '変更' %></td>
 			<% end %>
 		<% end %>
