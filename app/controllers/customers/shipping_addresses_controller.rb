@@ -1,4 +1,5 @@
 class Customers::ShippingAddressesController < ApplicationController
+before_action :authenticate_customer!# ログインしているユーザーのみ入れる
 
 def index
  @shipping_address = ShippingAddress.new

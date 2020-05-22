@@ -54,7 +54,7 @@ class Customers::OrderListsController < ApplicationController
     @cart_products.each do |cart_product| # 清算後のマイバックに入れている商品をorder_detailからcart_productを通して持ってくる
       order_detail = @order_list.order_details.new # order_listの主idはnewに入っている
       order_detail.product_id = cart_product.product_id #商品
-      order_detail.price = cart_product.product.price #商品の価格
+      order_detail.price = cart_product.product.price * 1.1 #商品の価格
       order_detail.number = cart_product.number # 商品の個数
   end
     if @order_list.save
