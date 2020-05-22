@@ -1,60 +1,62 @@
-<h1>注文確認画面</h1>
-
-<div>
-	<table>
-		<thead>
-			<tr>
-				<th>商品名</th>
-        　　　　　<th>単価（税込）</th>
-        　　　　　<th>数量</th>
-        　　　　　<th>小計</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @cart_products.each do |cart_product| %>
-			<tr>
-				<td><%= attachment_image_tag cart_product.product, :picture, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %><%= cart_product.product.name %></td>
-				<td><%= (cart_product.product.price * 1.1).to_i %>円(税込)</td>
-				<td><%= cart_product.number %></td>
-				<td><%= (cart_product.product.price * 1.1).to_i * cart_product.number %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-</div>
-<div>
-	<table>
-			<tr>
-              　<th>送料</th>
-              	<td><%= @postage.cost %>円</td>
-            </tr>
-            <tr>
-              　<th>商品合計</th>
-              	<td><%= @total_price %>円(税込)</td>
-            </tr>
-
-            <tr>
-              　<th>請求金額</th>
-              	<td><%= @total_price + @postage.cost%>円</td>
-            </tr>
-      </table>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1"><!-- 左右に余白、中央に配置 -->
+		<h2 class="product_index_title">注文確認画面<i class="fas fa-cookie-bite"></i></h2><br>
+		<table class="table1">
+			<thead>
+				<tr>
+					<th class="table1"></th>
+					<th class="table1">商品名</th>
+        　　　　　	<th class="table1">単価（税込）</th>
+        　　　　　	<th class="table1">数量</th>
+        　　　　　	<th class="table1">小計</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart_products.each do |cart_product| %>
+				<tr>
+					<td class="table1"><%= attachment_image_tag cart_product.product, :picture, format: 'jpeg', fallback: "no_image.jpg", size: "150x110" %></td>
+					<td class="table1"><%= cart_product.product.name %></td>
+					<td class="table1"><%= (cart_product.product.price * 1.1).to_i %>円</td>
+					<td class="table1"><%= cart_product.number %></td>
+					<td class="table1"><%= (cart_product.product.price * 1.1).to_i * cart_product.number %>円</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<div>
+		<table>
+				<tr>
+					<th class="table2">送料：</th>
+              		<td class="table2"><%= @postage.cost %>円(税込)</td>
+            	</tr>
+            	<tr>
+					<th class="table2">商品合計：</th>
+              		<td class="table2"><%= @total_price %>円(税込)</td>
+            	</tr><br>
+				<tr>
+					<th><p class="total_pprice1">請求金額：</p></th>
+              		<td><p class="total_pprice2"><%= @total_price + @postage.cost%>円(税込)</p></td>
+            	</tr>
+      	</table>
     </div>
-</div>
-<div>
-	<h4>支払い方法</h4>
-	<%= session[:input]["payment"] %>
-	<!-- byebugはhtmlではdeha""のように記述 -->
-</div>
-<div>
-	<h4>お届け先</h4>
-	<!-- 各指定カラム名表示 -->
-	<%= session[:input]["postal_code"] %>
-	<%= session[:input]["address"] %>
-	<%= session[:input]["name"] %>
-</div>
-<div>
-	<%= form_with model:@order_list, local: true, url: customers_order_lists_path, method: :post do |f| %>
-	<!-- form_withは探してくるファイルを.Jsで探すのがデフォルト。formforはhtml -->
+	<div>
+		<h3 class="product_index_title">〜 お支払方法 〜</h3>
+			<%= session[:input]["payment"] %>
+			<!-- byebugはhtmlではdeha""のように記述 -->
+	</div>
+
+	<div>
+		<h3 class="product_index_title">〜 お届け先 〜</h3>
+			<!-- 各指定カラム名表示 -->
+			<%= session[:input]["postal_code"] %>
+			<%= session[:input]["address"] %>
+			<%= session[:input]["name"] %>
+	</div>
+
+	<div>
+		<%= form_with model:@order_list, local: true, url: customers_order_lists_path, method: :post do |f| %>
+		<!-- form_withは探してくるファイルを.Jsで探すのがデフォルト。formforはhtml -->
 
   			<%= f.hidden_field :shipping_name, :value => session[:input]["name"] %>
   			<%= f.hidden_field :postal_code, :value => session[:input]["postal_code"] %>
@@ -62,10 +64,13 @@
   			<%= f.hidden_field :total_price, :value => @total_price %>
   			<%= f.hidden_field :shipping_fee, :value => @postage.cost %>
   			<%= f.hidden_field :payment_method, :value => session[:input]["payment"] %>
-<div>
-		<%= f.submit '購入を確定する', class:"btn btn-primary" %>
-</div>
-  	<% end %>
+	</div>
+	<div class="right">
+		<%= f.submit '購入を確定する', class:"btn btn-primary btn1  fa-lg" %>
+	</div>
+  		<% end %>
+	</div>
+  </div>
 </div>
 
 

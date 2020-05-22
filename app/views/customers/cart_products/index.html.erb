@@ -12,47 +12,47 @@
 <br>
 
 <div>
-  <table class="table">
+  <table class="table1">
     <thead>
       <tr>
-        <th></th>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th></th>
+        <th class="table1"></th>
+        <th class="table1">商品名</th>
+        <th class="table1">単価（税込）</th>
+        <th class="table1">数量</th>
+        <th class="table1">小計</th>
+        <th class="table1"></th>
       </tr>
     </thead>
     <tbody>
       <% @cart_products.each do |cart_product| %>
       <tr>
-        <td>
+        <td class="table1">
 
           <%= attachment_image_tag cart_product.product, :picture, format: 'jpeg', fallback: "no_image.jpg", size: "150x110" %>
         </td>
-        <td>
+        <td class="table1">
           <%= cart_product.product.name %>
         </td>
-        <td>
+        <td class="table1">
           <%= (cart_product.product.price * 1.1).to_i %>円
         </td>
-        <td>
+        <td class="table1">
           <%= form_for cart_product, url: customers_cart_product_path(cart_product.id),method: :PATCH do |f| %>
           <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %><!--フォームの中身 -->
           <%= f.submit "変更" %>
           <% end %>
         </td>
-        <td>
+        <td class="table1">
           <%= (cart_product.product.price * 1.1).to_i * cart_product.number %>円
         </td>
-        <td>
+        <td class="table1">
           <%= link_to "", customers_cart_product_path(cart_product.id),method: :delete, class:"fas fa-trash fa-lg trash_black" %> <!-- 押された後ルートに確認してコントローラーに -->
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-</div>
+</div><br>
 
 <div class="keep_shopping">
   <%= link_to "買い物を続ける", customers_products_path, class:"btn btn-success" %><!-- 商品一覧画面に遷移 -->
@@ -66,8 +66,8 @@
       </tr>
   </table>
 </div>
-<div class="right">
-  <%= link_to "  ご購入手続きへ",customers_order_lists_input_path, class:"btn btn-warning fas fa-shopping-cart fa-lg" %><!-- 情報入力に進むボタン -->
+<div class=right>
+  <%= link_to "  ご購入手続きへ",customers_order_lists_input_path, class:"btn btn-warning btn1 fas fa-shopping-cart fa-lg" %><!-- 情報入力に進むボタン -->
 </div>
 
 <% else %>
