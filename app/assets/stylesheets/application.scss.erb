@@ -288,7 +288,7 @@ color:#13985A;
 }
 
 /*カート購入手続きボタン*/
-.btn-warning{
+.btn1{
   height: 55px;
   padding: 20px 40px;
 }
@@ -298,15 +298,33 @@ color:#13985A;
   text-align:right;
 }
 
-.table{
-  border-collapse: collapse;
-  border: 1px solid #ccc;
-  line-height: 1.5;
+/* カート、注文確認table */
+table.table1{
+  border: 2px solid #ccc; /* 外枠を太く */
+  width:100%; /* 横幅 */
+  table-layout: fixed; /* セル均等に */
+  vertical-align: middle; /* 文字縦中央に */
+  font-size:20px; /* 文字サイズ */
+  text-align: center; /* 文字横真ん中に */
+}
+th.table1{
+  background: #fff5e5;/*背景色*/
+  border-bottom: 3px double #ccc; /* 下線2重線 */
+  text-align: center; /* 文字横真ん中に */
+}
+td.table1{
+  border-bottom: 1px solid #ccc; /* 下線 */
+  padding : 5px; /* 余白 */
 }
 
-.btn-primary{
-  height: 55px;
-  padding: 20px 40px;
+/* 注文確認table */
+th.table2{
+  border-bottom:solid 1px silver;
+  text-align:right;
+}
+td.table2{
+  border-bottom:solid 1px silver;
+  text-align:right;
 }
 
 .placement{
