@@ -1,0 +1,48 @@
+<div class="container">
+<div class="row">
+
+	<h1 class="admin_about">Admin's Profile<i class="fas fa-flushed"></i></h1>
+ 
+   <div class="profile">
+	   <p class="profile-img">
+		      <%= image_tag 'cock.jpeg', :size => '250x250' %>
+	   </p>
+   
+	    <div class="profile-text">
+		    <br>
+
+				<p>名前：ナガノ</p>
+				<p>年齢：</p>
+				<p>シェフになったきっかけ</p><br>
+				<p>※きっかけここに記述</p>
+
+			</div>
+    </div>
+ </div>
+
+<div class="row admin_about">
+
+        <h1>Shop's MAP</h1>
+        <div id='map'></div>
+
+        <style>
+        	#map{
+        		height:400px;
+        	}
+        </style>
+
+        <script>
+        	function initMap() {
+				  var opts = {
+				    zoom: 17,
+				    center: new google.maps.LatLng(35.6628654,139.6983706)
+				  };
+
+				  var map = new google.maps.Map(document.getElementById("map"), opts);
+				}
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYAWZndtqBRNq1g3SnRHU45LWUCyMKFqM&callback=initMap" async defer></script>
+
+
+</div>

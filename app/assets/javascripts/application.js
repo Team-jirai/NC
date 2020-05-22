@@ -44,7 +44,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
  $('#js-target').t({
-      speed : 50,
+      speed : 300,
       speed_vary :false
   });
 });
+
