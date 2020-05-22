@@ -1,0 +1,13 @@
+<div class="midasi">
+	<h3 class="midasitext">支払い方法編集</h3>
+</div>
+
+<%= form_for @payment_method, url: admins_payment_method_path(@payment_method.id) do |f| %>
+			<%= f.label :支払い方法 %>
+			<%= f.text_field :method %>
+			<%= f.radio_button :status, :true %>
+			<%= f.label :status, "有効" %>
+  			<%= f.radio_button :status, :false %>
+  			<%= f.label :status, "無効" %>
+			<%= f.submit '変更' %>
+<% end %>

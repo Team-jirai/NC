@@ -31,6 +31,7 @@
               <li><%= link_to '会員一覧', admins_customers_path, class:"fas fa-users" %></li>
               <li><%= link_to '注文履歴一覧', admins_order_lists_path, class:"fas fa-align-left" %></li>
               <li><%= link_to 'ジャンル一覧', admins_product_genres_path, class:"fas fa-ice-cream" %></li>
+              <li><%= link_to '支払い関連', admins_payment_methods_path, class:"fas fa-ice-cream" %></li>
               <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"fas fa-sign-out-alt" %></li>
             <% else %>
               <li><%= link_to '商品一覧', customers_products_path, class:"fas fa-cookie" %></li>

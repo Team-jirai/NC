@@ -54,6 +54,10 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show, :edit, :update, :create, :new]
 
     resources :product_genres, only: [:index, :edit, :update, :create]
+
+    resources :payment_methods, only: [:index, :edit, :update, :create]
+
+    resources :postages, only: [:index,:edit, :update, :create]
   end
 
 end
