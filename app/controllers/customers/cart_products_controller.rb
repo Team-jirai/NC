@@ -5,6 +5,7 @@ class Customers::CartProductsController < ApplicationController
   def index
     @cart_product = CartProduct.new
   	@cart_products = current_customer.cart_products # current_customerの商品のみ表示
+    # ログインしていないユーザーもカートに追加できるようにする
   end
 
   def create
