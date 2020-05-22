@@ -3,7 +3,9 @@ class Customers::ProductsController < ApplicationController
 def top
  @products = Product.page(params[:page]).per(4)
  @genres = ProductGenre.all
+end
 
+def about
 end
 
 def index
