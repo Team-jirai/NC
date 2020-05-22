@@ -1,6 +1,7 @@
 class Customers::CartProductsController < ApplicationController
 
    before_action :total_price, only:[:index]
+   before_action :authenticate_customer!# ログインしているユーザーのみ入れる
 
   def index
     @cart_product = CartProduct.new

@@ -1,13 +1,15 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-xs-10 col-xs-offset-1"><!-- 左右に余白、中央に配置 -->
+    <h2 class="product_index_title">お買い物かご<i class="fas fa-cookie-bite"></i></h2>
+<% if @cart_products.any? %>
+        <h5>現在カートには下記の商品が入っております。</h5><br><br>
 
-  <%= button_to "カートを空にする", customers_destroy_all_path, method: :delete %>
-
-
+<div class="right"><!-- 右寄せ -->
+  <%= button_to "カートを空にする", customers_destroy_all_path, method: :delete, class:"btn btn-danger" %>
 </div>
-
-
+<br>
 
 <div>
   <table class="table">
@@ -44,16 +46,18 @@
           <%= (cart_product.product.price * 1.1).to_i * cart_product.number %>円
         </td>
         <td>
-          <%= link_to "削除する", customers_cart_product_path(cart_product.id),method: :delete, class:"btn btn-danger" %> <!-- 押された後ルートに確認してコントローラーに -->
+          <%= link_to "", customers_cart_product_path(cart_product.id),method: :delete, class:"fas fa-trash fa-lg trash_black" %> <!-- 押された後ルートに確認してコントローラーに -->
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<div>
+
+<div class="keep_shopping">
   <%= link_to "買い物を続ける", customers_products_path, class:"btn btn-success" %><!-- 商品一覧画面に遷移 -->
 </div>
+
 <div>
   <table>
       <tr>
@@ -62,6 +66,17 @@
       </tr>
   </table>
 </div>
-<div>
-  <%= link_to "情報入力に進む",customers_order_lists_input_path, class:"btn btn-warning" %><!-- 情報入力に進むボタン -->
+<div class="right">
+  <%= link_to "  ご購入手続きへ",customers_order_lists_input_path, class:"btn btn-warning fas fa-shopping-cart fa-lg" %><!-- 情報入力に進むボタン -->
+</div>
+
+<% else %>
+  <h3>現在お客様のショッピングカートには商品がありません。</h3>
+  <div class="keep_shopping">
+        <%= link_to "買い物を続ける", customers_products_path, class:"btn btn-success" %><!-- 商品一覧画面に遷移 -->
+  </div>
+
+<% end %>
+  </div>
+  </div>
 </div>
