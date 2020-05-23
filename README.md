@@ -1,6 +1,6 @@
-# README
+# README:see_no_evil:
 
-# -NC-　
+# - NC(ナガノケーキ):cookie:-　
 長野によるナガノケーキのECショップサイト
 
 <p align="center">
