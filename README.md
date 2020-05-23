@@ -15,29 +15,17 @@ Admin長野さんによるお菓子のECショップサイト。<br>
 会員でなくても商品の閲覧は可能ですが、会員になれば商品購入ができます。<br>
 管理者はその日の注文件数が一目で確認でき、新商品の登録・編集ができます。また会員情報の閲覧が可能です。
 
- 
+
 # DEMO
  
 ※各ぺーじのスクショを掲載する
  
-# Features
- 
-・
- 
-# Requirement
- 
-"hoge"を動かすのに必要なライブラリなどを列挙する
 
+# Features
+
+長野さんのこだわりが強いECサイトとなります。
+長野さんにハマってしまうこと
  
-# Usage
- 
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
  
 # Note
  
@@ -45,15 +33,17 @@ python demo.py
 * 商品閲覧
 * カテゴリ検索
 * 商品の購入
-* 
-
-
+* 注文履歴の閲覧
+* 登録情報の変更
 
 管理者(Admin)
+* topページに当日の注文件数表示
+* 全会員の表示
+* 送料・支払方法の設定←new!:dizzy:
+* 商品ジャンル・商品の追加可能
+* 全会員の注文履歴の閲覧
  
 # Author
- 
-作成情報を列挙する
  
 * 作成者
 ```bash
@@ -66,13 +56,6 @@ python demo.py
 
 ```
  
-# License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-社内向けなら社外秘であることを明示してる
- 
-"hoge" is Confidential.
+#Thanks
 
 ![cock](https://github.com/Team-jirai/NC/blob/master/cockk.png)
