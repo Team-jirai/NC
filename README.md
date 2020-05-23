@@ -16,9 +16,19 @@ Admin長野さんによるお菓子のECショップサイト。<br>
 管理者はその日の注文件数が一目で確認でき、新商品の登録・編集ができます。また会員情報の閲覧が可能です。
 
 
-# DEMO
- 
-※各ぺーじのスクショを掲載する
+# DEMO(view)
+
+<h4 align="center">TOP page</h4> 
+
+![cock](https://github.com/Team-jirai/NC/blob/master/top.png)
+
+<h4 align="center">Cart page</h4> 
+
+![cock](https://github.com/Team-jirai/NC/blob/master/cart.png)
+
+<h4 align="center">Admin's product page</h4> 
+
+![cock](https://github.com/Team-jirai/NC/blob/master/admin.png)
  
 
 # Features
