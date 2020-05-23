@@ -11,33 +11,33 @@
 <a href="https://github.com/Team-jirai/NC/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Team-jirai/NC"></a>　<!-- GitHub stars -->
 <a href="https://github.com/Team-jirai/NC"><img alt="GitHub license" src="https://img.shields.io/github/license/Team-jirai/NC"></a>　<!-- GitHub license --></p>
  
-Admin長野さんによるお菓子のECショップサイト。<br>
-会員でなくても商品の閲覧は可能ですが、会員になれば商品購入ができます。<br>
-管理者はその日の注文件数が一目で確認でき、新商品の登録・編集ができます。また会員情報の閲覧が可能です。
+<p align="center">Admin長野さんによるお菓子のECショップサイト。</p>
+<p align="center">会員でなくても商品の閲覧は可能ですが、会員になれば商品購入ができます。</p>
+<p align="center">管理者はその日の注文件数が一目で確認でき、新商品の登録・編集ができます。また会員情報の閲覧が可能です。</p>
 
 
 # DEMO(view)
 
-<h4 align="center">TOP page</h4> 
+<h3 align="center">TOP page</h3> 
 
 ![cock](https://github.com/Team-jirai/NC/blob/master/top.png)
 
-<h4 align="center">Cart page</h4> 
+<h3 align="center">Cart page</h3> 
 
 ![cock](https://github.com/Team-jirai/NC/blob/master/cart.png)
 
-<h4 align="center">Admin's product page</h4> 
+<h3 align="center">Admin's product page</h3> 
 
 ![cock](https://github.com/Team-jirai/NC/blob/master/admin.png)
  
 
 # Features
 
-長野さんのこだわりが強いECサイトとなります。
+長野さんのこだわりが強いECサイトとなります。<br>
 長野さんにハマってしまうこと間違いなし。
  
  
-# Note
+# Note:green_book:
  
 会員(Customer)
 ```bash
@@ -70,7 +70,7 @@ Admin長野さんによるお菓子のECショップサイト。<br>
 
 ```
  
- # Thanks
+ # Thanks:kiss:
 
 ※注文すると長野さんから以下のようにmessageが表示されます。
 
