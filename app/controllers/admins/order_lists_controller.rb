@@ -17,6 +17,11 @@ class Admins::OrderListsController < ApplicationController
 	def update
 		@order_list = OrderList.find(params[:id])
 		@order_list.update(order_list_params)
+		if @order_list.status == "paymentok"
+			@order_list.order_details.each do |order_detail|
+				order_detail.update_attributes(making_status: "waitmaking")
+			end
+		end
 		redirect_back(fallback_location: root_path)
 	end
 
