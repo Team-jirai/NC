@@ -62,4 +62,6 @@ Admin長野さんによるお菓子のECショップサイト。<br>
  
  # Thanks
 
+※注文すると長野さんから以下のようにmessageが表示されます。
+
 ![cock](https://github.com/Team-jirai/NC/blob/master/cockk.png)
