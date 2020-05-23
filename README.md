@@ -1,23 +1,21 @@
 # README
 
-<p align="center">
-
 # -NC-　
 長野によるナガノケーキのECショップサイト
 
+<p align="center">
 <a href="https://github.com/Team-jirai/NC/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Team-jirai/NC"></a>　<!-- GitHub issues -->
 <a href="https://github.com/Team-jirai/NC/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Team-jirai/NC"></a> <!-- GitHub forks -->
 <a href="https://github.com/Team-jirai/NC/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Team-jirai/NC"></a>　<!-- GitHub stars -->
-<a href="https://github.com/Team-jirai/NC"><img alt="GitHub license" src="https://img.shields.io/github/license/Team-jirai/NC"></a>　<!-- GitHub license -->
-
-</p>
+<a href="https://github.com/Team-jirai/NC"><img alt="GitHub license" src="https://img.shields.io/github/license/Team-jirai/NC"></a>　<!-- GitHub license --></p>
 
  
 ![cock](https://github.com/Team-jirai/NC/blob/master/cockk.png)
 
  
-Admin長野さんによるお菓子のECショップサイト。
-会員でなくても商品の閲覧は可能ですが、会員になれば商品購入ができます。
+ 
+Admin長野さんによるお菓子のECショップサイト。<br>
+会員でなくても商品の閲覧は可能ですが、会員になれば商品購入ができます。<br>
 管理者はその日の注文件数が一目で確認でき、新商品の登録・編集ができます。また会員情報の閲覧が可能です。
 
  
