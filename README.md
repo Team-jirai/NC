@@ -1,7 +1,7 @@
 # README:see_no_evil:
 
-# - NC(ナガノケーキ):cookie:-　
-長野によるナガノケーキのECショップサイト
+<h2 align="center">-NC(ナガノケーキ):cookie:-</h2>
+<h4 align="center">長野によるナガノケーキのECショップサイト</h4> 
 
 ![cock](https://github.com/Team-jirai/NC/blob/master/nagano1.jpg)
 
