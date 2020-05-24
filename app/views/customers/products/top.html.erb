@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-<%= render 'layouts/sidebar' %>
+<%= render 'layouts/sidebar', genres: @genres %>
     <div class="col-xs-10">
      <div class="main-body">
         
@@ -22,14 +22,15 @@
               <div class="cake5"></div>
             </div>
               <p class="main-text1 box" id="js-target">
-                ようこそ、NaganoCakeへ！<br>
-                このサイトは、ケーキ販売のECサイトになります。<br>
-                会員でない方も商品の閲覧はできますが、<br>
-                購入には会員登録が必要になります。<br>
+                このサイトは製作者が<br>小学校でこころのノートを読んでいないため、<br>
+                他人を傷つける表現や、<br>
+                不適切な内容が含まれております<br>
+                予めご了承いただきますようよろしくお願いします<br>
+                ぱーかばーか
               </p>
         </div>
 　　　
-   　<h3 class="osusume"><i class="fas fa-star"></i>オススメ<i class="fas fa-star"></i></h3>
+   　<h3 class="osusume"><i class="fas fa-star"></i>オヌヌメ<i class="fas fa-star"></i></h3>
 
           <% @products.each do |product| %>
           <div class="col-md-3">
