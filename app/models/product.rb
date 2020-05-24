@@ -11,6 +11,11 @@ class Product < ApplicationRecord
     validates :picture, presence: true
     validates :sales_status, presence: true
 
+    scope :only_active, -> {
+      where(product_genre_id: ProductGenre.only_active)
+#      where(product_genre_id: ProductGenre.only_active.select(:id))
+    }
+
     def price_with_tax(price)
       (price * 1.1).to_i
     end
