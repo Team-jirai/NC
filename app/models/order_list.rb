@@ -8,7 +8,6 @@ class OrderList < ApplicationRecord
   # enum payment_method:{クレジットカード:0, 銀行振込:1}
   # enum status:{クレジットカード:0, 銀行振込:1}
 
-
   def sum_price
   	total_price + shipping_fee
   end

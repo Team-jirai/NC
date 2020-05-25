@@ -35,7 +35,6 @@ Rails.application.routes.draw do
 
     get 'order_lists/input' => 'order_lists#input'# 順番変更とcustomers/削除
     get 'order_lists/confirm' => 'order_lists#confirm'# 追加
-    post 'order_lists/confirm' => 'order_lists#create_test'# 順番変更とcustomers/削除
     get 'order_lists/thanks' => 'order_lists#thanks'# 順番変更とcustomers/削除
     resources :order_lists, only: [:index, :show, :create]# 順番変更
 
