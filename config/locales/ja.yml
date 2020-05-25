@@ -5,6 +5,7 @@ ja:
     product:
       sales_status:
         sale: "販売中"
+        recommend: "おすすめ"
         soldout: "売切"
     order_list:
       status:

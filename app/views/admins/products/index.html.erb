@@ -15,6 +15,7 @@
 				<th>税抜価格</th>
 				<th>ジャンル</th>
 				<th>いいね</th>
+				<th>コメント</th>
 				<th>ステータス</th>
 			</tr>
 		</thead>
@@ -27,6 +28,7 @@
 				<td><%= converting_to_jpy(product.price) %></td>
 				<td><%= product.product_genre.genre %></td>
 				<td><i class="fa fa-heart-o" aria-hidden="true"></i> <%= product.favorites.count %></td>
+				<td><%= product.post_comments.count %> 件</td>
 				<td><%= product.sales_status_i18n %></td>
 			</tr>
 			<% end %>
