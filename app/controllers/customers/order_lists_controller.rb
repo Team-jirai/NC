@@ -1,5 +1,5 @@
 class Customers::OrderListsController < ApplicationController
-     before_action :total_price, only:[:confirm]
+
      before_action :authenticate_customer!# ログインしているユーザーのみ入れる
 
   def index #注文履歴一覧
@@ -17,33 +17,40 @@ class Customers::OrderListsController < ApplicationController
     @order_list = OrderList.new
   end
 
-  def create_test# inputの情報をセッションに格納しconfirmに表示することができる
-    #binding.pry
-    if params[:order_list][:address_method].to_i == 1
-       session[:input] = {"payment": params[:order_list][:payment_method], "postal_code": current_customer.postal_code, "address": current_customer.address, "name": current_customer.name_sei + current_customer.name_mei}
-       #binding.pry
-    elsif params[:order_list][:address_method].to_i == 2
-       a = ShippingAddress.find(params[:select].to_i) #ShippingAddressのidをfindで見つけてaに入れている。
-       session[:input] = {"payment": params[:order_list][:payment_method], "postal_code": a.postal_code, "address": a.address, "name": a.name }
-        #binding.pry
-    elsif params[:order_list][:address_method] == "3"
-      #binding.pry
-       @order_list = OrderList.new
-       @order_list.postal_code = params[:order_list][:new_postal_code]
-       @order_list.address = params[:order_list][:new_address]
-       @order_list.shipping_name = params[:order_list][:new_name]
-       # p @order_list
-       session[:input] = {"payment": params[:payment_method], "postal_code": @order_list.postal_code , "address": @order_list.address, "name": @order_list.shipping_name }
-        #binding.pry
-    end
-    #タブを閉じるまでセッション内の情報は保持される。
-    redirect_to customers_order_lists_confirm_path # inputを保存している
-  end# セッションを使うと一時的に保存できる
-
   def confirm
     @cart_products = current_customer.cart_products
-    @order_list = OrderList.new
     @postage = Postage.find(1)
+
+    if params[:order_list][:address_method] == "self_address"
+       payment_method = order_list_params[:payment_method]
+              postal_code = current_customer.postal_code
+              address = current_customer.address
+              shipping_name = current_customer.name_sei + current_customer.name_mei
+# session[:input] = {"payment": params[:order_list][:payment_method], "postal_code": current_customer.postal_code, "address": current_customer.address, "name": current_customer.name_sei + current_customer.name_mei}
+    elsif params[:order_list][:address_method] == "registered_address"
+          payment_method = order_list_params[:payment_method]
+            a = ShippingAddress.find(params[:select].to_i) #ShippingAddressのidをfindで見つけてaに入れている。
+              postal_code = a.postal_code
+              address = a.address
+              shipping_name = a.name
+# session[:input] = {"payment": params[:order_list][:payment_method], "postal_code": a.postal_code, "address": a.address, "name": a.name }
+    elsif params[:order_list][:address_method] == "new_address"
+          payment_method = order_list_params[:payment_method]
+              postal_code = order_list_params[:postal_code]
+              address = order_list_params[:address]
+              shipping_name = order_list_params[:shipping_name]
+    end
+     @order_list = OrderList.new(payment_method: payment_method, postal_code: postal_code, address: address, shipping_name: shipping_name)
+    # if @order_list.valid? #全ての入力項目が存在すれば
+
+    # else
+    #     render :input
+    # end
+    if params[:order_list][:address_method].blank? || order_list_params[:payment_method].blank?
+       redirect_to request.referer # 遷移前のURLを取得
+    else
+       render :confirm
+    end
   end
 
   def create
