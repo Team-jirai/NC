@@ -1,4 +1,6 @@
 ja:
+  valid: 有効
+  invalid: 無効
   enums:
     product:
       sales_status:

@@ -2,8 +2,7 @@ class Customers::ProductsController < ApplicationController
 
 def top
  @products = Product.page(params[:page]).per(4)
- @genres = ProductGenre.all
- # @customer = Current_user
+ @genres = ProductGenre.only_active
 end
 
 def about
@@ -11,15 +10,24 @@ end
 
 def index
  @product = Product.new
- @products = Product.page(params[:page]).per(8)
- @genres = ProductGenre.all
+ @products = Product.only_active.page(params[:page]).per(8)
+#@products = []
+
+# Product.all.each do |product|
+#	if product.product_genre.is_valid #== true
+#	 	@products << product
+#	end
+#end
+
+ @genres = ProductGenre.only_active
 end
 
 def show
  @product = Product.find(params[:id])
  @product_new = CartProduct.new #formforで使うための空のモデル(空の箱),CartProductのコントローラーに送る。
- @genres = ProductGenre.all
  @post_comment = PostComment.new #商品へのコメント
+ @genres = ProductGenre.only_active
+
 end
 
 def create
