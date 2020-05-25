@@ -42,6 +42,7 @@
 
      <div class="col-xs-7">
 
+     			<h3>お気に入り <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i></h3><a><%= link_to '一覧を表示', customers_products_favorite_path, class:"btn btn-warning" %></a>
 				<h3 class="mypage_shipping">配送先登録・編集 <i class="fas fa-home"></i></h3>
 				<%= link_to "登録・編集する", customers_shipping_addresses_path, class:"btn btn-success" %>
         <h3>過去注文履歴 <i class="fas fa-cookie-bite"></i></h3><a><%= link_to '一覧を表示', customers_order_lists_path, class:"btn btn-warning" %></a>

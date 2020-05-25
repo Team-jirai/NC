@@ -10,6 +10,9 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses
   has_many :products, dependent: :destroy #
   has_many :post_comments, dependent: :destroy #1対Nの関係
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_products, through: :favorites, source: :product
+
   def active_for_authentication?
     super && (self.status == true)
   end

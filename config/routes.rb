@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'customers/products#top'
   get 'customers/products/about' => 'customers/products#about'
+  get 'customers/products/favorite' => 'customers/products#favorite'
 
   get 'customers/mypage' => 'customers#mypage'
   get 'customers/withdraw' => 'customers#withdraw'
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   namespace :customers do
     resources :products, only: [:index, :show] do
       resources :post_comments, only: [:create, :destroy] #do~end
+      resource :favorites, only:[:create, :destroy]
     end
     resources :product_genres, only: [:show]
     resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更

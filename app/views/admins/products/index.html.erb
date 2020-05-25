@@ -14,6 +14,7 @@
 				<th>商品名</th>
 				<th>税抜価格</th>
 				<th>ジャンル</th>
+				<th>いいね</th>
 				<th>ステータス</th>
 			</tr>
 		</thead>
@@ -25,6 +26,7 @@
 				<td><a href="<%= admins_product_path(product.id) %>"><%= product.name %></a></td>
 				<td><%= converting_to_jpy(product.price) %></td>
 				<td><%= product.product_genre.genre %></td>
+				<td><i class="fa fa-heart-o" aria-hidden="true"></i> <%= product.favorites.count %></td>
 				<td><%= product.sales_status_i18n %></td>
 			</tr>
 			<% end %>
