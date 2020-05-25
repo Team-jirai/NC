@@ -35,17 +35,48 @@
     </div>
 
     <div class="row">
+      <div class="col-xs-10">
  
         <!-- コメント表示部分 -->
+
+        <% if @post_comment.errors.any? %>
+          <div class="alert alert-warning">
+            <ul>
+              <h2><%= @post_comment.errors.count %> errors prohibited this book from being saved:</h2>
+              <% @post_comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            </ul>
+               <% end %>
+           </div>
+           <% end %>
+
+        <h4 class="voice"> みんなの声<i class="fas fa-comments"></i></h4>
         <% @product.post_comments.each do |post_comment| %>
          <div class="comment_text">
            <%= post_comment.comment %>
+         
+
+            <% if post_comment.customer == current_customer %>
+            <%= link_to '', customers_product_post_comment_path(@product, post_comment), method: :delete, class:"fas fa-trash fa trash_black " %>
+        </div>
+            
         <% end %>
-    </div>
+        <% end %>
+      </div>
+
         <!-- コメント表示部分 -->
 
         <!-- コメント入力フォーム -->
-
+        <%= form_for [@product, @post_comment], url:customers_product_post_comments_path(@product) do |f| %>
+        <div class="row">
+            <div class="col-xs-6">
+                 <%= f.text_area :comment, rows:'3', class: "form-control",placeholder: "コメント" %>
+            </div>
+        </div>
+        <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+        <i class="far fa-comments"></i> コメントする
+        <% end %>
+        <% end %>
 
         <!-- コメント入力フォーム -->
         
