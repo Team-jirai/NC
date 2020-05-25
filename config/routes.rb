@@ -28,7 +28,9 @@ Rails.application.routes.draw do
 
 
   namespace :customers do
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      resources :post_comments, only: [:create, :destroy] #do~end
+    end
     resources :product_genres, only: [:show]
     resources :cart_products, only: [:index, :update, :destroy, :create]# showをindexに変更
     delete 'cart_products' => 'cart_products#destroy_all', as:'destroy_all'

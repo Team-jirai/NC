@@ -18,7 +18,8 @@
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
-          <h2 class="NC-title">ナガノケーキ<i class="fas fa-cookie-bite"></i></h2>
+          <!-- <h2 class="NC-title">ナガノケーキ<i class="fas fa-cookie-bite"></i></h2> -->
+          <%= image_tag 'nagano4.jpg', :size => '260x83' %>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
@@ -46,7 +47,15 @@
               <%= text_field_tag :search %>
               <%= submit_tag ("Search") , class: 'search-btn'%>
               </nav>
+
+            <% else %>
+              <% if customer_signed_in? %>
+            <nav class="hello_name">
+              <p class="hello"><%= current_customer.name_sei %><%= current_customer.name_mei %>さんHello!今日も素敵だね<i class="fas fa-kiss-wink-heart"></i></p>
+            </nav>
+             <% end %>
             <% end %>
+
           </ul>
         </nav>
 

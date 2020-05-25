@@ -1,9 +1,12 @@
 class Product < ApplicationRecord
     belongs_to :product_genre
+    belongs_to :customer #
     has_many :cart_products
     has_many :order_details
     enum sales_status:{sale:0, soldout:1}
     attachment :picture
+    has_many :post_comments, dependent: :destroy #
+
 
     validates :name, presence: true
     validates :description, presence: true
