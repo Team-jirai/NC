@@ -1,5 +1,6 @@
 class Customers::PostCommentsController < ApplicationController
  before_action :authenticate_customer!# ログインしているユーザーのみ入れる
+ #before_action :authenticate_admin!
 
  def create
    @product = Product.find(params[:product_id])
@@ -20,7 +21,7 @@ class Customers::PostCommentsController < ApplicationController
  def destroy
    comment = PostComment.find(params[:id])
    comment.destroy
-   redirect_to customers_product_path(comment.product)
+   redirect_back(fallback_location: root_path)
  end
 
 

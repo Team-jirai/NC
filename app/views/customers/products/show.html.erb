@@ -35,19 +35,19 @@
         </div>
     <div class="col-xs-6">
     <% if current_customer %><!--  ログインしているユーザーを指定（ログインしていない場合何も表示しない） -->
-        <% if @product.sales_status == "sale" %><!--  整数でいじれない -->
-            <div class="cart">
+        <% if @product.sales_status == "soldout" %><!--  整数でいじれない -->
+          <div class="cart">
+            <p>この商品は売り切れです。</p>
+        <% else %>
             <%= form_for @product_new, url: customers_cart_products_path, method: :POST do |f| %>
                 <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %>
                 <%= f.hidden_field :product_id, :value => @product.id %>
                 <!-- 商品のidをカート商品idに入れる -->
                 <%= f.submit "カートに入れる", class:"btn btn-primary" %><br>
                 <!-- method: :POSTはPOSTに飛ぶための記述 -->
-            <% end %>
-        <% else %>
-            <p>この商品は売り切れです。</p>
-            </div>
+              <% end %>
         <% end %>
+          </div>
     <% end %>
 
      </div>
@@ -73,14 +73,11 @@
         <% @product.post_comments.each do |post_comment| %>
          <div class="comment_text">
            <%= post_comment.comment %>
-         
-
             <% if post_comment.customer == current_customer %>
             <%= link_to '', customers_product_post_comment_path(@product, post_comment), method: :delete, class:"fas fa-trash fa trash_black " %>
-        </div>
-            
-        <% end %>
-        <% end %>
+            <% end %>
+            <% end %>
+          </div>
       </div>
 
         <!-- コメント表示部分 -->

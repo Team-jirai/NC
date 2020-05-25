@@ -2,7 +2,7 @@ class Product < ApplicationRecord
     belongs_to :product_genre
     has_many :cart_products
     has_many :order_details
-    enum sales_status:{sale:0, soldout:1}
+    enum sales_status:{sale:0, recommend:1, soldout:2}
     attachment :picture
     has_many :post_comments, dependent: :destroy #
     has_many :favorites, dependent: :destroy

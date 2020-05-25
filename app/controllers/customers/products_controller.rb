@@ -1,7 +1,7 @@
 class Customers::ProductsController < ApplicationController
 
 def top
- @products = Product.page(params[:page]).per(4)
+ @products = Product.where(sales_status: "recommend").page(params[:page]).per(3)
  @genres = ProductGenre.only_active
 end
 
@@ -9,7 +9,7 @@ def about
 end
 
 def favorite
-	@products = current_customer.favorite_products
+	@products = current_customer.favorite_products.page(params[:page]).per(8)
 	@genres = ProductGenre.only_active
 end
 
