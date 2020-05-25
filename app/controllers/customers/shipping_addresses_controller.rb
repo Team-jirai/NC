@@ -46,7 +46,6 @@ end
 
 
  private
-
  def shipping_address_params
   	params.require(:shipping_address).permit(:customer_id, :name, :postal_code, :address)
  end
