@@ -8,6 +8,11 @@ end
 def about
 end
 
+def favorite
+	@products = current_customer.favorite_products
+	@genres = ProductGenre.only_active
+end
+
 def index
  @product = Product.new
  @products = Product.only_active.page(params[:page]).per(8)

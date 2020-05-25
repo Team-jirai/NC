@@ -38,6 +38,24 @@
               　<div class="product-page">
                 <%= link_to customers_product_path(product.id) do %>
                   <%= attachment_image_tag product, :picture, format:'jpeg', size:"200x200" %><br>
+                  <div class="favorite">
+                  <% if current_customer %>
+                    <% if product.favorited_by?(current_customer) %>
+                      <%= link_to customers_product_favorites_path(product), method: :delete do %>
+                        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                        <%= product.favorites.count %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to customers_product_favorites_path(product), method: :post do %>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <%= product.favorites.count %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                      <%= product.favorites.count %>
+                    <% end %>
+                  </div>
                   <div class="product_price1"><%= product.name %><br></div>
                   <p class="product_price2"><%= product.price_with_tax(product.price) %>円</p><br>
                 </div>

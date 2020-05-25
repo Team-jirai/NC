@@ -15,6 +15,13 @@
 				</div>
 			</div>
 			<div class="explain_content">
+				<div class="admin_label"><p>いいね</p></div>
+				<div class="explain_text">
+					<i class="fa fa-heart-o" aria-hidden="true"></i>
+					<%= @product.favorites.count %>
+				</div>
+			</div>
+			<div class="explain_content">
 				<div class="admin_label"><p>商品説明</p></div>
 				<div class="explain_text">
 					<%= @product.description %>
