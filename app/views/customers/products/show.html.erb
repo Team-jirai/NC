@@ -26,6 +26,25 @@
         <!-- method: :POSTはPOSTに飛ぶための記述 -->
         </div>
     <% end %>
+
+     </div>
+    </div>
+
+    <div class="row">
+ 
+        <!-- コメント表示部分 -->
+        <% @product.post_comments.each do |post_comment| %>
+         <div class="comment_text">
+           <%= post_comment.comment %>
+        <% end %>
+    </div>
+        <!-- コメント表示部分 -->
+
+        <!-- コメント入力フォーム -->
+
+
+        <!-- コメント入力フォーム -->
+        
      </div>
     </div>
   </div>
