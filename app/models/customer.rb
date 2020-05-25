@@ -17,6 +17,22 @@ class Customer < ApplicationRecord
     super && (self.status == true)
   end
 
+  def self.search(search, customer_or_product, how_search)
+        if customer_or_product == "1"
+            if how_search == "1"
+                    Customer.where(['name_sei LIKE ?', "%#{search}%"])
+            elsif how_search == "2"
+                    Customer.where(['name_sei LIKE ?', "%#{search}"])
+            elsif how_search == "3"
+                    Customer.where(['name_sei LIKE ?', "#{search}%"])
+            elsif how_search == "4"
+                    Customer.where(['name_sei LIKE ?', "#{search}"])
+            else
+                    User.all
+            end
+        end
+    end
+
   def total_cart_price #モデルから
     total_price = 0 #値を初期化している
     self.cart_products.each do |cart_product| # ログインしたユーザーに結びついているカート商品

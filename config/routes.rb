@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'searchs/search'
   root 'customers/products#top'
   get 'customers/products/about' => 'customers/products#about'
   get 'customers/products/favorite' => 'customers/products#favorite'
@@ -45,6 +46,8 @@ Rails.application.routes.draw do
     resources :shipping_addresses, only: [:index, :edit, :update, :create, :destroy]
 
   end
+
+    get 'admins/searchs' => 'admins/searchs#search'
 
   namespace :admins do
     get 'top' => 'order_lists#top'

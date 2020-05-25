@@ -14,6 +14,23 @@ class Product < ApplicationRecord
     validates :picture, presence: true
     validates :sales_status, presence: true
 
+    def self.search(search, customer_or_product,how_search)
+
+      if customer_or_product == '2'
+          if how_search == "1"
+             Product.where(['name LIKE ?', "%#{search}%"])
+          elsif how_search == "2"
+             Product.where(['name LIKE ?', "%#{search}"])
+          elsif how_search == "3"
+             Product.where(['name LIKE ?', "#{search}%"])
+          elsif how_search == "4"
+             Product.where(['name LIKE ?', "#{search}"])
+          else
+             Product.all
+         end
+      end
+    end
+
     scope :only_active, -> {
       where(product_genre_id: ProductGenre.only_active)
 #      where(product_genre_id: ProductGenre.only_active.select(:id))

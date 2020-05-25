@@ -1,0 +1,68 @@
+<h1>検索結果</h1>
+
+<% if @customer_or_product == "1" %>
+
+	<div class="midasi">
+		<h3 class="midasitext">会員一覧</h3>
+	</div>
+
+	<table class="table table-hover table-inverse">
+		<thead>
+			<tr>
+				<th>会員ID</th>
+				<th>氏名</th>
+				<th>メールアドレス</th>
+				<th>会員ステータス</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @customers.each do |customer| %>
+			<tr>
+				<td><%= customer.id %></td>
+				<td><a href="<%= admins_customer_path(customer.id) %>"><%= customer.name_sei%><%= customer.name_mei%></a></td>
+				<td><%= customer.email %></td>
+				<td><% if customer.status == true %>
+						<p>有効</p>
+					<% else %>
+						<p>退会済み</p>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+<% elsif @customer_or_product == "2" %>
+
+	<div class="midasi">
+		<h3 class="midasitext">商品一覧</h3>
+	</div>
+
+	<div class="genrelists">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>商品ID</th>
+					<th>商品名</th>
+					<th>税抜価格</th>
+					<th>ジャンル</th>
+					<th>ステータス</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @products.each do |product| %>
+				<tr>
+					<td><%= product.id %></td>
+					<td><a href="<%= admins_product_path(product.id) %>"><%= product.name %></a></td>
+					<td><%= converting_to_jpy(product.price) %></td>
+					<td><%= product.product_genre.genre %></td>
+					<td><%= product.sales_status_i18n %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+<% end %>
