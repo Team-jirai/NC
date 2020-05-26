@@ -1,106 +1,137 @@
 <div class="container">
   <div class="row">
 
-<%= render 'layouts/sidebar', genres: @genres %>
+     <%= render 'layouts/sidebar', genres: @genres %>
 
-    <div class="col-xs-10">
-     <div class="top-body">
-        <%= link_to @product_path do %>
-        <% end %>
-        <p class="product-image">
-            <%= attachment_image_tag @product, :picture, format:'jpeg', size:"250x250" %>
-        </p>
-        <div class="product-text">
-        <div class="favorite">
-            <% if current_customer %>
-                 <% if @product.favorited_by?(current_customer) %>
-                    <%= link_to customers_product_favorites_path(@product), method: :delete do %>
-                        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                        <%= @product.favorites.count %>
-                    <% end %>
-                <% else %>
-                    <%= link_to customers_product_favorites_path(@product), method: :post do %>
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        <%= @product.favorites.count %>
-                    <% end %>
+    <div class="product_show">
+        <div class="col-xs-10">
+           <div class="top-body">
+                <%= link_to @product_path do %>
                 <% end %>
-            <% else %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= @product.favorites.count %>
-            <% end %>
+            <p class="product-image">
+                   <%= attachment_image_tag @product, :picture, format:'jpeg', size:"250x250" %>
+            </p>
+                <div class="product-text">
+                   <div class="favorite">
+                      <% if current_customer %>
+                        <% if @product.favorited_by?(current_customer) %>
+                          <%= link_to customers_product_favorites_path(@product), method: :delete do %>
+                           <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                             <%= @product.favorites.count %>
+                          <% end %>
+                        <% else %>
+                           <%= link_to customers_product_favorites_path(@product), method: :post do %>
+                             <i class="fa fa-heart-o" aria-hidden="true"></i>
+                             <%= @product.favorites.count %>
+                           <% end %>
+                        <% end %>
+                        <% else %>
+                             <i class="fa fa-heart-o" aria-hidden="true"></i>
+                             <%= @product.favorites.count %>
+                        <% end %>
+                    </div>
+                        <p class="product-title"><%= @product.name %><br></p>
+                        <p class="product-description"><%= @product.description %><br></p>
+                        <p class="product-price">¥<%= @product.price_with_tax(@product.price) %>(税込)</p>
+                </div>
+
+                <div class="col-xs-10">
+
+                <% if current_customer %><!--  ログインしているユーザーを指定（ログインしていない場合何も表示しない） -->
+                    <% if @product.sales_status == "soldout" %><!--  整数でいじれない -->
+                          <div class="cart_product">
+                            <p>この商品は売り切れです。</p>
+                    <% else %>
+                        <%= form_for @product_new, url: customers_cart_products_path, method: :POST do |f| %>
+                              <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %>
+                              <%= f.hidden_field :product_id, :value => @product.id %>
+                    <!-- 商品のidをカート商品idに入れる -->
+                              <%= f.submit "カートに入れる", class:"btn btn-primary" %><br>
+                    <!-- method: :POSTはPOSTに飛ぶための記述 -->
+                    <% end %>
+                    <% end %>
+                          </div>
+                <% end %>
+                </div>
+
             </div>
-        <p class="product-title"><%= @product.name %><br></p>
-        <p class="product-description"><%= @product.description %><br></p>
-        <p class="product-price">¥<%= @product.price_with_tax(@product.price) %>(税込)</p>
         </div>
-    <div class="col-xs-6">
-    <% if current_customer %><!--  ログインしているユーザーを指定（ログインしていない場合何も表示しない） -->
-        <% if @product.sales_status == "soldout" %><!--  整数でいじれない -->
-          <div class="cart">
-            <p>この商品は売り切れです。</p>
-        <% else %>
-            <%= form_for @product_new, url: customers_cart_products_path, method: :POST do |f| %>
-                <%= f.select :number,[1,2,3,4,5,6,7,8,9,10], :pronpt => "個数選択", class: 'sentaku' %>
-                <%= f.hidden_field :product_id, :value => @product.id %>
-                <!-- 商品のidをカート商品idに入れる -->
-                <%= f.submit "カートに入れる", class:"btn btn-primary" %><br>
-                <!-- method: :POSTはPOSTに飛ぶための記述 -->
-              <% end %>
-        <% end %>
-          </div>
+    </div>
+
+
+
+<!-- コメント表示部分 -->
+
+
+   <div class="voicee">
+
+
+    <% if @post_comment.errors.any? %>
+        <div class="alert alert-warning">
+             <ul>
+               <h2><%= @post_comment.errors.count %> errors prohibited this book from being saved:</h2>
+                 <% @post_comment.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+             </ul>
+                <% end %>
+        </div>
     <% end %>
 
-     </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-10">
- 
-        <!-- コメント表示部分 -->
-
-        <% if @post_comment.errors.any? %>
-          <div class="alert alert-warning">
-            <ul>
-              <h2><%= @post_comment.errors.count %> errors prohibited this book from being saved:</h2>
-              <% @post_comment.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            </ul>
-               <% end %>
-           </div>
-           <% end %>
-
-        <h4 class="voice"> みんなの声<i class="fas fa-comments"></i></h4>
-        <% @product.post_comments.each do |post_comment| %>
-         <div class="comment_text">
-           <%= post_comment.comment %>
-            <% if post_comment.customer == current_customer %>
-            <%= link_to '', customers_product_post_comment_path(@product, post_comment), method: :delete, class:"fas fa-trash fa trash_black " %>
-            <% end %>
-            <% end %>
-          </div>
-      </div>
-
-        <!-- コメント表示部分 -->
-
-        <!-- コメント入力フォーム -->
-        <%= form_for [@product, @post_comment], url:customers_product_post_comments_path(@product) do |f| %>
-        <div class="row">
-            <div class="col-xs-6">
-                 <%= f.text_area :comment, rows:'3', class: "form-control",placeholder: "コメント" %>
+      <h4 class="voice"> みんなの声<i class="fas fa-comments"></i></h4>
+          <% @product.post_comments.each do |post_comment| %>
+             <div class="comment_text">
+                <%= post_comment.comment %>
+                  <% if post_comment.customer == current_customer %>
+                    <%= link_to '', customers_product_post_comment_path(@product, post_comment), method: :delete, class:"fas fa-trash fa trash_black " %>
+                  <% end %>
+          <% end %>
             </div>
-        </div>
-        <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-        <i class="far fa-comments"></i> コメントする
-        <% end %>
-        <% end %>
+   </div>
 
-        <!-- コメント入力フォーム -->
-        
-     </div>
-     </div>
+ <!-- コメント表示部分 -->
+
+ <!-- コメント入力フォーム -->
+    <div class="form_comment">
+       <%= form_for [@product, @post_comment], url:customers_product_post_comments_path(@product) do |f| %>
+            <div class="text_comment">
+               <%= f.text_area :comment, rows:'3', class:"form-control comment_form", placeholder: "コメント"%>
+            </div>
+                <div class="submit_comment">
+                   <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+                   <i class="far fa-comments"></i> コメントする
+                   <% end %>
+                </div>
+                  <% end %>
+    
     </div>
+    <!-- コメント入力フォーム -->
+  
   </div>
 </div>
+
+
+
+
+
+
+<style>
+    .comment_form{
+        width:190px;
+        height:25px;
+    }
+
+    .voicee{
+        padding-left:200px;
+    }
+
+    .form_comment{
+        padding-left:200px;
+    }
+
+    .text_comment{
+    }
+
+</style>
 
 
 
