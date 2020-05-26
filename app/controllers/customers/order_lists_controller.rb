@@ -6,7 +6,6 @@ class Customers::OrderListsController < ApplicationController
     # @order_list = OrderList.new
     # @order_lists = OrderList.where(customer_id: current_customer.id) #ログインしているユーザーの注文履歴のみ表示
     @order_lists = current_customer.order_lists #has_many :order_listsでcustomerとアソシエーションされているため呼び出せる。
-
   end
 
   def show #注文履歴詳細
@@ -39,17 +38,23 @@ class Customers::OrderListsController < ApplicationController
               postal_code = order_list_params[:postal_code]
               address = order_list_params[:address]
               shipping_name = order_list_params[:shipping_name]
+              @shipping_address = ShippingAddress.new(shipping_address_params)
+              @shipping_address.customer_id = current_customer.id
+              @shipping_address.save
     end
      @order_list = OrderList.new(payment_method: payment_method, postal_code: postal_code, address: address, shipping_name: shipping_name)
-    # if @order_list.valid? #全ての入力項目が存在すれば
 
-    # else
-    #     render :input
-    # end
-    if params[:order_list][:address_method].blank? || order_list_params[:payment_method].blank?
-       redirect_to request.referer # 遷移前のURLを取得
+
+
+    # バリデーションのためのif文
+    if params[:order_list][:address_method] == "self_address" && current_customer.postal_code.present? && current_customer.address.present? && payment(params[:order_list][:payment_method])
+          render :confirm
+    elsif params[:order_list][:address_method] == "registered_address" && @order_list.present? && payment(params[:order_list][:payment_method]) #registered_addressを選択してかつ@order_listに情報が入っておりかつ"支払い方法"を選択していない場合
+          render :confirm
+    elsif params[:order_list][:address_method] == "new_address" && params[:shipping_address][:postal_code].present? && params[:shipping_address][:address].present? && params[:shipping_address][:name].present? && payment(params[:order_list][:payment_method])
+          render :confirm
     else
-       render :confirm
+       redirect_to request.referer # 遷移前のURLを取得
     end
   end
 
@@ -64,7 +69,7 @@ class Customers::OrderListsController < ApplicationController
       order_detail.product_id = cart_product.product_id #商品
       order_detail.price = cart_product.product.price * 1.1 #商品の価格
       order_detail.number = cart_product.number # 商品の個数
-  end
+    end
     if @order_list.save
     # @order_listには１つのレコードが保存
     @cart_products.destroy_all #ログインユーザーのカートを定義、全て削除
@@ -84,4 +89,16 @@ class Customers::OrderListsController < ApplicationController
   def order_list_params
     params.require(:order_list).permit(:shipping_fee, :customer_id, :total_price, :status, :payment_method, :shipping_name, :postal_code, :address)
   end
+  def shipping_address_params
+    params.require(:shipping_address).permit(:name, :postal_code, :address)
+  end
+
+  def payment(pay)
+    if pay == "支払い方法"
+      false
+    else
+      true
+    end
+  end
 end
+
