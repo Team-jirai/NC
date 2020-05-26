@@ -60,8 +60,20 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    customers_mypage_path
+    root_path
   end
+
+  def reject_user
+     @user = Customer.find_by(email: params[:customer][:email].downcase)
+     if @user
+       if (@user.valid_password?(params[:customer][:password]) && (@user.active_for_authentication? == false))
+         flash[:error] = "退会済みです。"
+         redirect_to new_customer_registration_path
+       end
+     else
+       flash[:error] = "必須項目を入力してください。"
+     end
+   end
 
   private
   def sign_up_params

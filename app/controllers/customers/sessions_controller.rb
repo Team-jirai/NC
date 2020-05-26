@@ -34,7 +34,7 @@ class Customers::SessionsController < Devise::SessionsController
      if @user
        if (@user.valid_password?(params[:customer][:password]) && (@user.active_for_authentication? == false))
          flash[:error] = "退会済みです。"
-         redirect_to root_path
+         redirect_to new_customer_session_path
        end
      else
        flash[:error] = "必須項目を入力してください。"
