@@ -9,7 +9,7 @@
       <!-- formforはモデルと関連づけなければいけない。form_withはモデルと関連づけなくていい -->
        <div class="col-md-12 ml-4">
           <label class="placement">
-         <%= f.collection_select :payment_method, PaymentMethod.where(status: true), :method, :method, :prompt => "支払い方法" %>
+         <%= f.collection_select :payment_method, PaymentMethod.where(status: true), :method, :method %>
           </label>
        </div><br>
 
