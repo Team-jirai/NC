@@ -48,27 +48,43 @@
 
 	<div>
 		<h3 class="product_index_title">〜 お届け先 〜</h3>
-			<!-- 各指定カラム名表示 -->
-			<%= @order_list.postal_code %>
-			<%= @order_list.address %>
-			<%= @order_list.shipping_name %>
-	</div>
-
-	<div>
 		<%= form_with model:@order_list, local: true, url: customers_order_lists_path, method: :post do |f| %>
 		<!-- form_withは探してくるファイルを.Jsで探すのがデフォルト。formforはhtml -->
+			<!-- 各指定カラム名表示 -->
+			 <% if params[:order_list][:address_method] == "self_address" %>
+				<%= @order_list.postal_code %>
+				<%= @order_list.address %>
+				<%= @order_list.shipping_name %>
+  				<%= f.hidden_field :shipping_name, :value => @order_list.shipping_name %>
+  				<%= f.hidden_field :postal_code, :value => @order_list.postal_code %>
+  				<%= f.hidden_field :address, :value => @order_list.address %>
 
-  			<%= f.hidden_field :shipping_name, :value => @order_list.shipping_name %>
-  			<%= f.hidden_field :postal_code, :value => @order_list.postal_code %>
-  			<%= f.hidden_field :address, :value => @order_list.address %>
+			<% elsif params[:order_list][:address_method] == "registered_address" %>
+				<%= @order_list.postal_code %>
+				<%= @order_list.address %>
+				<%= @order_list.shipping_name %>
+  				<%= f.hidden_field :shipping_name, :value => @order_list.shipping_name %>
+  				<%= f.hidden_field :postal_code, :value => @order_list.postal_code %>
+  				<%= f.hidden_field :address, :value => @order_list.address %>
+
+			<% elsif params[:order_list][:address_method] == "new_address" %>
+				<%= @shipping_address.postal_code %>
+				<%= @shipping_address.address %>
+				<%= @shipping_address.name %>
+  				<%= f.hidden_field :shipping_name, :value => @shipping_address.name %>
+  				<%= f.hidden_field :postal_code, :value => @shipping_address.postal_code %>
+  				<%= f.hidden_field :address, :value => @shipping_address.address %>
+			<% end %>
+
   			<%= f.hidden_field :total_price, :value => current_customer.total_cart_price %>
   			<%= f.hidden_field :shipping_fee, :value => @postage.cost %>
   			<%= f.hidden_field :payment_method, :value => @order_list.payment_method %>
-	</div>
-	<div class="right">
-		<%= f.submit '購入を確定する', class:"btn btn-primary btn1  fa-lg" %>
-	</div>
+
+		<div class="right">
+			<%= f.submit '購入を確定する', class:"btn btn-primary btn1  fa-lg" %>
+		</div>
   		<% end %>
+  	</div>
 	</div>
   </div>
 </div>
