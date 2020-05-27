@@ -5,7 +5,7 @@ class Customers::OrderListsController < ApplicationController
   def index #注文履歴一覧
     # @order_list = OrderList.new
     # @order_lists = OrderList.where(customer_id: current_customer.id) #ログインしているユーザーの注文履歴のみ表示
-    @order_lists = current_customer.order_lists #has_many :order_listsでcustomerとアソシエーションされているため呼び出せる。
+    @order_lists = current_customer.order_lists.order(id: "DESC") #has_many :order_listsでcustomerとアソシエーションされているため呼び出せる。
   end
 
   def show #注文履歴詳細
