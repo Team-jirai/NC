@@ -7,7 +7,7 @@ class Admins::OrderListsController < ApplicationController
 	end
 
 	def index
-		@order_lists = OrderList.all
+		@order_lists = OrderList.all.order(id: "DESC")
 	end
 
 	def show
