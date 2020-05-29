@@ -72,7 +72,7 @@ gem 'jquery-rails' # RailsでjQueryを使えるようにするため
 
 gem 'pry-byebug' # 一度プログラム処理を止めて、その時点のアプリケーションの状態をみることができる
 
-gem 'kaminari','~> 1.1.1' #ページ区切る為
+gem 'kaminari','~> 1.2.1' #ページ区切る為
 
 gem 'jp_prefecture' # 住所機能
 
